@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vocab.api.base.ICourse;
+import com.vocab.api.dao.base.ICourseDao;
 import com.vocab.api.pojo.Course;
 
-public class CourseDao extends AbsDao implements IDao<Course> {
+public class CourseDao extends AbsDao implements ICourseDao<Course> {
 
 
 	@Override
@@ -25,18 +26,18 @@ public class CourseDao extends AbsDao implements IDao<Course> {
 	}
 
 	@Override
-	public boolean save(Course t) {
-		return iRepository.deleteCourse(t);
+	public boolean save(Course course) {
+		return iRepository.saveCourse(course);
 	}
 
 	@Override
-	public boolean update(Course t) {
-		return iRepository.updateCourse(t);
+	public boolean update(Course course) {
+		return iRepository.updateCourse(course);
 	}
 
 	@Override
-	public boolean delete(Course t) {
-		return iRepository.deleteCourse(t);
+	public boolean delete(Course course) {
+		return iRepository.deleteCourse(course);
 	}
 
 }

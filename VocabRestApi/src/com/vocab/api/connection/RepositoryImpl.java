@@ -59,6 +59,12 @@ public class RepositoryImpl implements IRepository{
 	public boolean deleteLesson(ILesson object) {
 		return LessonDBFunc.delete(object);
 	}
+	
+
+	@Override
+	public List<ILesson> getAllLessonByCourseID(int id) {
+		return LessonDBFunc.getAllByCourseID(id);
+	}
 
 	@Override
 	public List<IVocab> getAllVocab() {
@@ -110,4 +116,13 @@ public class RepositoryImpl implements IRepository{
 		return VocabTypeDBFunc.delete(object);
 	}
 
+	@Override
+	public List<IVocab> getAllVocabByTypeID(int id) {
+		return VocabDBFunc.getAllByTypeID(id);
+	}
+
+	@Override
+	public List<IVocab> getAllVocabByLessonID(int id) {
+		return VocabDBFunc.getAllByLessonID(id);
+	}
 }

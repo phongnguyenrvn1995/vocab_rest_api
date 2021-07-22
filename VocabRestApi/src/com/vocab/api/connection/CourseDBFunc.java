@@ -11,11 +11,11 @@ import com.vocab.api.pojo.Course;
 
 public class CourseDBFunc {
 	public static boolean save(ICourse course) {
-		VocabsConnection.open();
+		GlobalConnection.open();
 		String sql = "INSERT INTO `course` (`course_id`, " + "`course_name`, " + "`course_description`, "
 				+ "`course_date_create`, " + "`course_status`)" + " VALUES (NULL, ?, ?, ?, ?);";
 
-		PreparedStatement statement = VocabsConnection.getPreparedStatement(sql);
+		PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
 		try {
 			statement.setString(1, course.getCourse_name());
 			statement.setString(2, course.getCourse_description());
@@ -30,10 +30,10 @@ public class CourseDBFunc {
 	}
 
 	public static ICourse get(int id) {
-		VocabsConnection.open();
+		GlobalConnection.open();
 		String sql = "SELECT * FROM `course` WHERE course_id = ?";
 
-		PreparedStatement statement = VocabsConnection.getPreparedStatement(sql);
+		PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
 		try {
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
@@ -57,10 +57,10 @@ public class CourseDBFunc {
 	}
 
 	public static List<ICourse> gets() {
-		VocabsConnection.open();
+		GlobalConnection.open();
 		String sql = "SELECT * FROM `course`";
 
-		PreparedStatement statement = VocabsConnection.getPreparedStatement(sql);
+		PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
 		try {
 			ResultSet rs = statement.executeQuery();
 			List<ICourse> list = new ArrayList<ICourse>();
@@ -84,11 +84,11 @@ public class CourseDBFunc {
 	}
 
 	public static boolean update(ICourse course) {
-		VocabsConnection.open();
+		GlobalConnection.open();
 		String sql = "UPDATE `course` " + "SET " + "`course_name` = ?," + "`course_description` = ?,"
 				+ "`course_date_create` = ?," + "`course_status` = ? " + " WHERE `course_id` = ?";
 
-		PreparedStatement statement = VocabsConnection.getPreparedStatement(sql);
+		PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
 		try {
 			statement.setString(1, course.getCourse_name());
 			statement.setString(2, course.getCourse_description());
@@ -104,10 +104,10 @@ public class CourseDBFunc {
 	}
 
 	public static boolean delete(ICourse course) {
-		VocabsConnection.open();
+		GlobalConnection.open();
 		String sql = "DELETE FROM `course` WHERE `course_id` = ?";
 
-		PreparedStatement statement = VocabsConnection.getPreparedStatement(sql);
+		PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
 		try {
 			statement.setInt(1, course.getCourse_id());
 			return statement.executeUpdate() != 0;

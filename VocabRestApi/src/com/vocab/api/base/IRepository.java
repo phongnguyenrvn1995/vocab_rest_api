@@ -23,6 +23,8 @@ public interface IRepository {
 
 	boolean deleteLesson(ILesson t);
 
+	List<ILesson> getAllLessonByCourseID(int id);
+
 	List<IVocab> getAllVocab();
 
 	IVocab getVocab(int id);
@@ -42,4 +44,8 @@ public interface IRepository {
 	boolean updateVocabType(IVocabType t);
 
 	boolean deleteVocabType(IVocabType t);
+	
+	List<IVocab> getAllVocabByTypeID(int id);
+	
+	List<IVocab> getAllVocabByLessonID(int id);
 }

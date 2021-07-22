@@ -1,4 +1,4 @@
-package com.vocab.api.dao;
+package com.vocab.api.dao.base;
 
 import java.util.List;
 
