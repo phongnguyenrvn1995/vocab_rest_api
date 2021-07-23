@@ -40,4 +40,13 @@ public class CourseDao extends AbsDao implements ICourseDao<Course> {
 		return iRepository.deleteCourse(course);
 	}
 
+	@Override
+	public List<Course> getAllByStatusID(int id) {
+		List<ICourse> iList = iRepository.getAllCourseByStatusID(id);
+		List<Course> list = new ArrayList<Course>();
+		for(ICourse ic : iList) {
+			list.add((Course) ic);
+		}
+		return list;
+	}
 }

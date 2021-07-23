@@ -24,6 +24,13 @@ public class CourseAPI {
 		lessonDao = new LessonDao();
 	}
 
+	@Path("/get_by_status/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Course> getsByStatus(@PathParam("id") int id) {
+		return courseDao.getAll();
+	}
+
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

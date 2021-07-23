@@ -5,6 +5,7 @@ import java.util.List;
 import com.vocab.api.base.ICourse;
 import com.vocab.api.base.ILesson;
 import com.vocab.api.base.IRepository;
+import com.vocab.api.base.IStatus;
 import com.vocab.api.base.IVocab;
 import com.vocab.api.base.IVocabType;
 
@@ -33,6 +34,12 @@ public class RepositoryImpl implements IRepository{
 	@Override
 	public boolean deleteCourse(ICourse object) {
 		return CourseDBFunc.delete(object);
+	}
+
+		
+	@Override
+	public List<ICourse> getAllCourseByStatusID(int id) {
+		return CourseDBFunc.getAllByStatusID(id);
 	}
 
 	@Override
@@ -64,6 +71,12 @@ public class RepositoryImpl implements IRepository{
 	@Override
 	public List<ILesson> getAllLessonByCourseID(int id) {
 		return LessonDBFunc.getAllByCourseID(id);
+	}
+
+	
+	@Override
+	public List<ILesson> getAllLessonByStatusID(int id) {
+		return LessonDBFunc.getAllByStatusID(id);
 	}
 
 	@Override
@@ -124,5 +137,30 @@ public class RepositoryImpl implements IRepository{
 	@Override
 	public List<IVocab> getAllVocabByLessonID(int id) {
 		return VocabDBFunc.getAllByLessonID(id);
+	}
+
+	@Override
+	public List<IStatus> getAllStatus() {
+		return StatusDBFunc.getAll();
+	}
+
+	@Override
+	public IStatus getStatus(int id) {
+		return StatusDBFunc.get(id);
+	}
+
+	@Override
+	public boolean saveStatus(IStatus t) {
+		return StatusDBFunc.save(t);
+	}
+
+	@Override
+	public boolean updateStatus(IStatus t) {
+		return StatusDBFunc.update(t);
+	}
+
+	@Override
+	public boolean deleteStatus(IStatus t) {
+		return StatusDBFunc.delete(t);
 	}
 }

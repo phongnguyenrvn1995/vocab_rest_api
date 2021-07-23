@@ -29,6 +29,13 @@ public class LessonAPI {
 		vocabDao = new VocabDao();
 	}
 
+	@Path("/get_by_status/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Lesson> getsByStatus(@PathParam("id") int id) {
+		return lessonDao.getAllByStatusID(id);
+	}
+
 	@Path("/get_by_course/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

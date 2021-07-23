@@ -13,6 +13,8 @@ public interface IRepository {
 
 	boolean deleteCourse(ICourse t);
 
+	List<ICourse> getAllCourseByStatusID(int id);
+
 	List<ILesson> getAllLesson();
 
 	ILesson getLesson(int id);
@@ -24,6 +26,8 @@ public interface IRepository {
 	boolean deleteLesson(ILesson t);
 
 	List<ILesson> getAllLessonByCourseID(int id);
+
+	List<ILesson> getAllLessonByStatusID(int id);
 
 	List<IVocab> getAllVocab();
 
@@ -48,4 +52,19 @@ public interface IRepository {
 	List<IVocab> getAllVocabByTypeID(int id);
 	
 	List<IVocab> getAllVocabByLessonID(int id);
+	
+	
+	public List<IStatus> getAllStatus();
+
+	
+	public IStatus getStatus(int id);
+
+	
+	public boolean saveStatus(IStatus t);
+
+	
+	public boolean updateStatus(IStatus t);
+
+	
+	public boolean deleteStatus(IStatus t);
 }

@@ -48,4 +48,16 @@ public class LessonDao extends AbsDao implements ILessonDao<Lesson> {
 		}
 		return list;
 	}
+
+	@Override
+	public List<Lesson> getAllByStatusID(int id) {
+		List<ILesson> iList = iRepository.getAllLessonByStatusID(id);
+		List<Lesson> list = new ArrayList<Lesson>();
+		for(ILesson il : iList) {
+			list.add((Lesson) il);
+		}
+		return list;
+	}
+	
+	
 }

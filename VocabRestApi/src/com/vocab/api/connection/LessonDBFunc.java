@@ -135,4 +135,29 @@ public class LessonDBFunc {
 		}
 		return null;
 	}
+
+	public static List<ILesson> getAllByStatusID(int id) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT * FROM `lesson` WHERE lesson_status = ?";
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			preparedStatement.setInt(1, id);
+			ResultSet rs = preparedStatement.executeQuery();
+			List<ILesson> list = new ArrayList<ILesson>();
+			while (rs.next()) {
+				Lesson lesson = new Lesson();
+				lesson.setLesson_id(rs.getInt("lesson_id"));
+				lesson.setLesson_course(rs.getInt("lesson_course"));
+				lesson.setLesson_name(rs.getString("lesson_name"));
+				lesson.setLesson_status(rs.getInt("lesson_status"));
+				list.add(lesson);
+			}
+			rs.close();
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

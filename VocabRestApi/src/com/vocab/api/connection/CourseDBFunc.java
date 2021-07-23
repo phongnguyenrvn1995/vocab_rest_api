@@ -117,4 +117,32 @@ public class CourseDBFunc {
 		}
 		return false;
 	}
+
+	public static List<ICourse> getAllByStatusID(int id) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT * FROM `course` WHERE course_status = ?";
+
+			PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
+			statement.setInt(1, id);
+			ResultSet rs = statement.executeQuery();
+			List<ICourse> list = new ArrayList<ICourse>();
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourse_id(rs.getInt("course_id"));
+				course.setCourse_name(rs.getString("course_name"));
+				course.setCourse_description(rs.getString("course_description"));
+				course.setCourse_date_creat(rs.getString("course_date_create"));
+				course.setCourse_status(rs.getInt("course_status"));
+				list.add(course);
+			}
+			rs.close();
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }
