@@ -7,7 +7,7 @@ import com.vocab.api.base.ICourse;
 import com.vocab.api.dao.base.ICourseDao;
 import com.vocab.api.pojo.Course;
 
-public class CourseDao extends AbsDao implements ICourseDao<Course> {
+public class CourseDao extends BaseDao implements ICourseDao<Course> {
 
 
 	@Override

@@ -7,7 +7,7 @@ import com.vocab.api.base.ILesson;
 import com.vocab.api.dao.base.ILessonDao;
 import com.vocab.api.pojo.Lesson;
 
-public class LessonDao extends AbsDao implements ILessonDao<Lesson> {
+public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 
 	@Override
 	public List<Lesson> getAll() {

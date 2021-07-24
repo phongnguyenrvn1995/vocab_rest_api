@@ -5,9 +5,11 @@ import java.util.List;
 import com.vocab.api.base.ICourse;
 import com.vocab.api.base.ILesson;
 import com.vocab.api.base.IRepository;
+import com.vocab.api.base.IResponse;
 import com.vocab.api.base.IStatus;
 import com.vocab.api.base.IVocab;
 import com.vocab.api.base.IVocabType;
+import com.vocab.api.pojo.Response;
 
 public class RepositoryImpl implements IRepository{
 
@@ -162,5 +164,30 @@ public class RepositoryImpl implements IRepository{
 	@Override
 	public boolean deleteStatus(IStatus t) {
 		return StatusDBFunc.delete(t);
+	}
+
+	@Override
+	public List<IResponse> getResponseAll() {
+		return ResponseDBFunc.getAll();
+	}
+
+	@Override
+	public IResponse getResponse(int id) {
+		return ResponseDBFunc.get(id);
+	}
+
+	@Override
+	public boolean saveResponse(Response t) {
+		return ResponseDBFunc.save(t);
+	}
+
+	@Override
+	public boolean updateResponse(Response t) {
+		return ResponseDBFunc.update(t);
+	}
+
+	@Override
+	public boolean deleteResponse(Response t) {
+		return ResponseDBFunc.delete(t);
 	}
 }

@@ -2,6 +2,8 @@ package com.vocab.api.base;
 
 import java.util.List;
 
+import com.vocab.api.pojo.Response;
+
 public interface IRepository {
 	List<ICourse> getAllCourse();
 
@@ -48,23 +50,28 @@ public interface IRepository {
 	boolean updateVocabType(IVocabType t);
 
 	boolean deleteVocabType(IVocabType t);
-	
+
 	List<IVocab> getAllVocabByTypeID(int id);
-	
+
 	List<IVocab> getAllVocabByLessonID(int id);
-	
-	
+
 	public List<IStatus> getAllStatus();
 
-	
 	public IStatus getStatus(int id);
 
-	
 	public boolean saveStatus(IStatus t);
 
-	
 	public boolean updateStatus(IStatus t);
 
-	
 	public boolean deleteStatus(IStatus t);
+
+	public List<IResponse> getResponseAll();
+
+	public IResponse getResponse(int id);
+
+	public boolean saveResponse(Response t);
+
+	public boolean updateResponse(Response t);
+
+	public boolean deleteResponse(Response t);
 }

@@ -3,10 +3,10 @@ package com.vocab.api.dao;
 import com.vocab.api.base.IRepository;
 import com.vocab.api.connection.RepositoryImpl;
 
-public abstract class AbsDao {
+public abstract class BaseDao {
 	IRepository iRepository;
 	
-	public AbsDao() {
+	public BaseDao() {
 		super();
 		initRepository();
 	}

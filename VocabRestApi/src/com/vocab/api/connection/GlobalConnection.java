@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class GlobalConnection {    
 	// JDBC driver name and database URL
     static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-    static final String DB_URL = "jdbc:mariadb://127.0.0.1:3306/vocabs_db";
+    static final String DB_URL = "jdbc:mariadb://localhost:3306/vocabs_db";
 
     //  Database credentials
     static final String USER = "root";

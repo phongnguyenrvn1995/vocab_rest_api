@@ -7,7 +7,7 @@ import com.vocab.api.base.IVocab;
 import com.vocab.api.dao.base.IVocabDao;
 import com.vocab.api.pojo.Vocab;
 
-public class VocabDao extends AbsDao implements IVocabDao<Vocab> {
+public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 
 	@Override
 	public List<Vocab> getAll() {

@@ -7,7 +7,7 @@ import com.vocab.api.base.IStatus;
 import com.vocab.api.dao.base.IStatusDao;
 import com.vocab.api.pojo.Status;
 
-public class StatusDao extends AbsDao implements IStatusDao<Status>{
+public class StatusDao extends BaseDao implements IStatusDao<Status>{
 
 	@Override
 	public List<Status> getAll() {
