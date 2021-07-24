@@ -13,18 +13,23 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.vocab.api.dao.LessonDao;
+import com.vocab.api.dao.ResponseDao;
 import com.vocab.api.dao.VocabDao;
+import com.vocab.api.pojo.Response;
 import com.vocab.api.pojo.Vocab;
+import com.vocab.consts.ResponseConst;
 
 @Path("/vocab")
 public class VocabAPI {
 	private final VocabDao vocabDao;
 	private final LessonDao lessonDao;
+	private final ResponseDao responseDao;
 
 	public VocabAPI() {
 		super();
 		vocabDao = new VocabDao();
 		lessonDao = new LessonDao();
+		responseDao = new ResponseDao();
 	}
 
 	@Path("/gets_by_type/{id}")
@@ -59,17 +64,19 @@ public class VocabAPI {
 	@Path("/delete/{id}")
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	public boolean delete(@PathParam("id") int id) {
+	public Response delete(@PathParam("id") int id) {
 		Vocab vocab = vocabDao.get(id);
 		if(vocab == null)
-			return true;
-		return vocabDao.delete(vocab);
+			return responseDao.get(ResponseConst.SUCCESS);
+		return vocabDao.delete(vocab) ? 
+				responseDao.get(ResponseConst.SUCCESS) :
+					responseDao.get(ResponseConst.ERROR_DB_ERROR);
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/save")
-	public boolean save(
+	public Response save(
 			/* @FormParam("vocab_id") int vocab_id, */ 
 			@FormParam("vocab_type") int vocab_type,
 			@FormParam("vocab_lesson") int vocab_lesson, 
@@ -80,7 +87,7 @@ public class VocabAPI {
 			@FormParam("vocab_sound_url") String vocab_sound_url
 			) {
 		if(lessonDao.get(vocab_lesson) == null) { // check lesson exists or not
-			return false;
+			return responseDao.get(ResponseConst.ERROR_LESSON_DOES_NOT_EXIST);
 		}
 		
 		Vocab vocab = new Vocab();
@@ -91,13 +98,15 @@ public class VocabAPI {
 		vocab.setVocab_vi(vocab_vi);
 		vocab.setVocab_description(vocab_description);
 		vocab.setVocab_sound_url(vocab_sound_url);
-		return vocabDao.save(vocab);
+		return vocabDao.save(vocab) ? 
+				responseDao.get(ResponseConst.SUCCESS) :
+					responseDao.get(ResponseConst.ERROR_DB_ERROR);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update")
-	public boolean update(
+	public Response update(
 			@FormParam("vocab_id") int vocab_id, 
 			@FormParam("vocab_type") int vocab_type,
 			@FormParam("vocab_lesson") int vocab_lesson, 
@@ -108,7 +117,7 @@ public class VocabAPI {
 			@FormParam("vocab_sound_url") String vocab_sound_url
 			) {
 		if(lessonDao.get(vocab_lesson) == null) { // check lesson exists or not
-			return false;
+			return responseDao.get(ResponseConst.ERROR_LESSON_DOES_NOT_EXIST);
 		}
 		
 		Vocab vocab = new Vocab();
@@ -120,6 +129,8 @@ public class VocabAPI {
 		vocab.setVocab_vi(vocab_vi);
 		vocab.setVocab_description(vocab_description);
 		vocab.setVocab_sound_url(vocab_sound_url);
-		return vocabDao.update(vocab);
+		return vocabDao.update(vocab) ? 
+				responseDao.get(ResponseConst.SUCCESS) :
+					responseDao.get(ResponseConst.ERROR_DB_ERROR);
 	}
 }
