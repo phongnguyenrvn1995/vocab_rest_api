@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import com.vocab.api.dao.LessonDao;
 import com.vocab.api.dao.ResponseDao;
 import com.vocab.api.dao.VocabDao;
+import com.vocab.api.dao.VocabTypeDao;
 import com.vocab.api.pojo.Response;
 import com.vocab.api.pojo.Vocab;
 import com.vocab.consts.ResponseConst;
@@ -24,12 +25,14 @@ public class VocabAPI {
 	private final VocabDao vocabDao;
 	private final LessonDao lessonDao;
 	private final ResponseDao responseDao;
+	private final VocabTypeDao vocabTypeDao;
 
 	public VocabAPI() {
 		super();
 		vocabDao = new VocabDao();
 		lessonDao = new LessonDao();
 		responseDao = new ResponseDao();
+		vocabTypeDao = new VocabTypeDao();
 	}
 
 	@Path("/gets_by_type/{id}")
@@ -89,6 +92,10 @@ public class VocabAPI {
 		if(lessonDao.get(vocab_lesson) == null) { // check lesson exists or not
 			return responseDao.get(ResponseConst.ERROR_LESSON_DOES_NOT_EXIST);
 		}
+
+		if(vocabTypeDao.get(vocab_type) == null) { // check lesson exists or not
+			return responseDao.get(ResponseConst.ERROR_TYPE_DOES_NOT_EXIST);
+		}
 		
 		Vocab vocab = new Vocab();
 		vocab.setVocab_type(vocab_type);
@@ -118,6 +125,10 @@ public class VocabAPI {
 			) {
 		if(lessonDao.get(vocab_lesson) == null) { // check lesson exists or not
 			return responseDao.get(ResponseConst.ERROR_LESSON_DOES_NOT_EXIST);
+		}
+
+		if(vocabTypeDao.get(vocab_type) == null) { // check lesson exists or not
+			return responseDao.get(ResponseConst.ERROR_TYPE_DOES_NOT_EXIST);
 		}
 		
 		Vocab vocab = new Vocab();

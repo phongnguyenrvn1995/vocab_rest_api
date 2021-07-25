@@ -3,48 +3,25 @@
 <head>
  <link rel="stylesheet" href="css/my_css.css">
 <meta charset="ISO-8859-1">
-<title>Course API</title>
+<title>Lesson API</title>
 </head>
 <body>
-	<h1>Course API</h1>
+	<h1>Lesson API</h1>
 
 
 	<div class="box_contain">
 		<div class="box_title">
-			<b>Get courses list by status ID</b>
+			<b>Get lesson list by status ID</b>
 		</div>
 		<div class="box_body">
 			<div>
 				<b>Method: </b> <i>GET</i>
 			</div>
-			<div>			
-				<b>Path: </b>
-				<i>
-					<a href="/VocabRestApi/vocab_api/course/get_by_status/{id}">
-						/VocabRestApi/vocab_api/course/get_by_status/{id}
-					</a>
-				</i>
-			</div>
 			<div>
-				<b>Produces: </b> <i>APPLICATION_JSON</i>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="box_contain">
-		<div class="box_title">
-			<b>Get all courses in database</b>
-		</div>
-		<div class="box_body">
-			<div>
-				<b>Method: </b> <i>GET</i>
-			</div>
-			<div>			
-				<b>Path: </b>
+				<b>Path: </b> 
 				<i>
-					<a href="/VocabRestApi/vocab_api/course/gets">
-						/VocabRestApi/vocab_api/course/gets
+					<a href="/VocabRestApi/vocab_api/lesson/get_by_status/{id}">
+						/VocabRestApi/vocab_api/lesson/get_by_status/{id}
 					</a>
 				</i>
 			</div>
@@ -54,20 +31,20 @@
 		</div>
 	</div>
 	
-
+	
 	<div class="box_contain">
 		<div class="box_title">
-			<b>Get a course detail by its ID</b>
+			<b>Get lesson list by course ID</b>
 		</div>
 		<div class="box_body">
 			<div>
 				<b>Method: </b> <i>GET</i>
 			</div>
-			<div>			
-				<b>Path: </b>
+			<div>
+				<b>Path: </b> 
 				<i>
-					<a href="/VocabRestApi/vocab_api/course/get/{id}">
-						/VocabRestApi/vocab_api/course/get/{id}
+					<a href="/VocabRestApi/vocab_api/lesson/get_by_course/{id}">
+						/VocabRestApi/vocab_api/lesson/get_by_course/{id}
 					</a>
 				</i>
 			</div>
@@ -76,21 +53,66 @@
 			</div>
 		</div>
 	</div>
-
-
+	
+	
 	<div class="box_contain">
 		<div class="box_title">
-			<b>Delete a course detail by its ID</b>
+			<b>Get all lesson in database</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b>
+				<i>
+					<a href="/VocabRestApi/vocab_api/lesson/gets">
+						/VocabRestApi/vocab_api/lesson/gets
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Get a lesson detail by its ID</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b>
+				<i>
+					<a href="/VocabRestApi/vocab_api/lesson/get/{id}">
+						/VocabRestApi/vocab_api/lesson/get/{id}
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Delete a lesson by its ID</b>
 		</div>
 		<div class="box_body">
 			<div>
 				<b>Method: </b> <i>DELETE</i>
 			</div>
-			<div>			
+			<div>
 				<b>Path: </b>
 				<i>
-					<a href="/VocabRestApi/vocab_api/course/delete/{id}">
-						/VocabRestApi/vocab_api/course/delete/{id}
+					<a href="/VocabRestApi/vocab_api/lesson/delete/{id}">
+						/VocabRestApi/vocab_api/lesson/delete/{id}
 					</a>
 				</i>
 			</div>
@@ -99,20 +121,21 @@
 			</div>
 		</div>
 	</div>
-
+	
+	
 	<div class="box_contain">
 		<div class="box_title">
-			<b>Insert course into database</b>
+			<b>Insert a lesson into database</b>
 		</div>
 		<div class="box_body">
 			<div>
 				<b>Method: </b> <i>PUT</i>
 			</div>
-			<div>			
+			<div>
 				<b>Path: </b>
 				<i>
-					<a href="/VocabRestApi/vocab_api/course/save">
-						/VocabRestApi/vocab_api/course/save
+					<a href="/VocabRestApi/vocab_api/lesson/save">
+						/VocabRestApi/vocab_api/lesson/save
 					</a>
 				</i>
 			</div>
@@ -129,40 +152,35 @@
 						<td><i>x-www-form-urlencoded</i><hr></td>
 					</tr>
 					<tr>
-						<td><b>String: </b></td>
-						<td><i>course_name</i><br></td>
+						<td><b>Integer: </b></td>
+						<td><i>lesson_course</i><br></td>
 					</tr>
 					<tr>
 						<td><b>String: </b></td>
-						<td><i>course_description</i></td>
-					</tr>
-					<tr>
-						<td><b>String: </b></td>
-						<td><i>course_date_creat</i></td>
+						<td><i>lesson_name</i></td>
 					</tr>
 					<tr>
 						<td><b>Integer: </b></td>
-						<td><i>course_status</i></td>
+						<td><i>lesson_status</i></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 	</div>
-
-
+	
 	<div class="box_contain">
 		<div class="box_title">
-			<b>Update course by its ID</b>
+			<b>Update a lesson in database</b>
 		</div>
 		<div class="box_body">
 			<div>
 				<b>Method: </b> <i>POST</i>
 			</div>
-			<div>			
+			<div>
 				<b>Path: </b>
 				<i>
-					<a href="/VocabRestApi/vocab_api/course/update">
-						/VocabRestApi/vocab_api/course/update
+					<a href="/VocabRestApi/vocab_api/lesson/update">
+						/VocabRestApi/vocab_api/lesson/update
 					</a>
 				</i>
 			</div>
@@ -172,7 +190,7 @@
 			<div>
 				<b>Parameters: </b>
 			</div>
-			<div class="box_param_detail">			
+			<div class="box_param_detail">
 				<table>
 					<tr>
 						<td style="width: 100px"><b>Type: </b><hr></td>
@@ -180,29 +198,24 @@
 					</tr>
 					<tr>
 						<td><b>Integer: </b></td>
-						<td><i>course_id</i><br></td>
-					</tr>
-					<tr>
-						<td><b>String: </b></td>
-						<td><i>course_name</i><br></td>
-					</tr>
-					<tr>
-						<td><b>String: </b></td>
-						<td><i>course_description</i></td>
-					</tr>
-					<tr>
-						<td><b>String: </b></td>
-						<td><i>course_date_creat</i></td>
+						<td><i>lesson_id</i><br></td>
 					</tr>
 					<tr>
 						<td><b>Integer: </b></td>
-						<td><i>course_status</i></td>
+						<td><i>lesson_course</i><br></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>lesson_name</i></td>
+					</tr>
+					<tr>
+						<td><b>Integer: </b></td>
+						<td><i>lesson_status</i></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 	</div>
-	
 	<a href="index.html">BACK</a>
 </body>
 </html>

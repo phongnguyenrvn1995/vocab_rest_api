@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/my_css.css">
+<meta charset="ISO-8859-1">
+<title>Vocab Type API</title>
+</head>
+<body>
+	<h1>Vocab Type API</h1>
+
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Get All Vocab Type List</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab_type/gets">
+						/VocabRestApi/vocab_api/vocab_type/gets 
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Get a Vocab Type by its ID</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab_type/get/{id}">
+						/VocabRestApi/vocab_api/vocab_type/get/{id} 
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Delete a Vocab Type by its ID</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>DELETE</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab_type/delete/{id}">
+						/VocabRestApi/vocab_api/vocab_type/delete/{id}
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Insert a Vocab Type into database</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>PUT</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab_type/save">
+						/VocabRestApi/vocab_api/vocab_type/save
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+			
+			<div>
+				<b>Parameters: </b>
+			</div>
+			<div class="box_param_detail">			
+				<table>
+					<tr>
+						<td style="width: 100px"><b>Type: </b><hr></td>
+						<td><i>x-www-form-urlencoded</i><hr></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_type_name</i><br></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Update a Vocab Type in database</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>POST</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab_type/update">
+						/VocabRestApi/vocab_api/vocab_type/update
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+			
+			<div>
+				<b>Parameters: </b>
+			</div>
+			<div class="box_param_detail">			
+				<table>
+					<tr>
+						<td style="width: 100px"><b>Type: </b><hr></td>
+						<td><i>x-www-form-urlencoded</i><hr></td>
+					</tr>
+					<tr>
+						<td><b>Integer: </b></td>
+						<td><i>vocab_type_id</i><br></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_type_name</i><br></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+	<a href="index.html">BACK</a>
+</body>
+</html>

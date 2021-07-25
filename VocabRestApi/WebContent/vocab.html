@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/my_css.css">
+<meta charset="ISO-8859-1">
+<title>Vocab API</title>
+</head>
+<body>
+	<h1>Vocab API</h1>
+
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Get Vocab List by Type ID</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab/gets_by_type/{id}">
+						/VocabRestApi/vocab_api/vocab/gets_by_type/{id}
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Get Vocab List by Lesson ID</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab/gets_by_lesson/{id}">
+						/VocabRestApi/vocab_api/vocab/gets_by_lesson/{id}
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Get All Vocab in database</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab/gets">
+						/VocabRestApi/vocab_api/vocab/gets
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Get a Vocab detail by its ID</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>GET</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab/get/{id}">
+						/VocabRestApi/vocab_api/vocab/get/{id}
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="box_contain">
+		<div class="box_title">
+			<b>DELETE a Vocab detail by its ID</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>DELETE</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab/delete/{id}">
+						/VocabRestApi/vocab_api/vocab/delete/{id}
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Insert a Vocab into database</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>PUT</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab/save">
+						/VocabRestApi/vocab_api/vocab/save
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>			
+			<div>
+				<b>Parameters: </b>
+			</div>
+			<div class="box_param_detail">
+				<table>
+					<tr>
+						<td style="width: 100px"><b>Type: </b><hr></td>
+						<td><i>x-www-form-urlencoded</i><hr></td>
+					</tr>
+					<tr>
+						<td><b>Integer: </b></td>
+						<td><i>vocab_type</i><br></td>
+					</tr>
+					<tr>
+						<td><b>Integer: </b></td>
+						<td><i>vocab_lesson</i><br></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_en</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_ipa</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_vi</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_description</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_sound_url</i></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="box_contain">
+		<div class="box_title">
+			<b>Insert a Vocab into database</b>
+		</div>
+		<div class="box_body">
+			<div>
+				<b>Method: </b> <i>POST</i>
+			</div>
+			<div>
+				<b>Path: </b> 
+				<i> 
+					<a href="/VocabRestApi/vocab_api/vocab/update">
+						/VocabRestApi/vocab_api/vocab/update
+					</a>
+				</i>
+			</div>
+			<div>
+				<b>Produces: </b> <i>APPLICATION_JSON</i>
+			</div>			
+			<div>
+				<b>Parameters: </b>
+			</div>
+			<div class="box_param_detail">
+				<table>
+					<tr>
+						<td style="width: 100px"><b>Type: </b><hr></td>
+						<td><i>x-www-form-urlencoded</i><hr></td>
+					</tr>
+					<tr>
+						<td><b>Integer: </b></td>
+						<td><i>vocab_id</i><br></td>
+					</tr>
+					<tr>
+						<td><b>Integer: </b></td>
+						<td><i>vocab_type</i><br></td>
+					</tr>
+					<tr>
+						<td><b>Integer: </b></td>
+						<td><i>vocab_lesson</i><br></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_en</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_ipa</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_vi</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_description</i></td>
+					</tr>
+					<tr>
+						<td><b>String: </b></td>
+						<td><i>vocab_sound_url</i></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<a href="index.html">BACK</a>
+</body>
+</html>

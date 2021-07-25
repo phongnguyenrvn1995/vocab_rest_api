@@ -13,6 +13,7 @@ public class ResponseConst {
 	public static final int ERROR_STATUS_DOES_NOT_EXIST = 6;
 	public static final int ERROR_COURSE_DOES_NOT_EXIST = 7;
 	public static final int ERROR_LESSON_DOES_NOT_EXIST = 8;
+	public static final int ERROR_TYPE_DOES_NOT_EXIST = 9;
 	
-	public static final int ERROR_DB_ERROR = 9;
+	public static final int ERROR_DB_ERROR = 99;
 }
