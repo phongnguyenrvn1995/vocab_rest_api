@@ -3,6 +3,7 @@ package com.vocab.api;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -69,7 +70,7 @@ public class ResponseAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update")
 	public Response update(
-			@FormParam("response_id") int response_id,
+			@DefaultValue("-1") @FormParam("response_id") int response_id,
 			@FormParam("response_description") String response_description
 			) {
 		Response response = new Response();

@@ -3,6 +3,7 @@ package com.vocab.api;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -83,9 +84,9 @@ public class LessonAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/save")
 	public Response save(
-			@FormParam("lesson_course") int lesson_course,
+			@DefaultValue("-1") @FormParam("lesson_course") int lesson_course,
 			@FormParam("lesson_name") String lesson_name,
-			@FormParam("lesson_status") int lesson_status
+			@DefaultValue("-1") @FormParam("lesson_status") int lesson_status
 			) {
 		if(courseDao.get(lesson_course) == null)
 			return responseDao.get(ResponseConst.ERROR_COURSE_DOES_NOT_EXIST);
@@ -104,10 +105,10 @@ public class LessonAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update")
 	public Response update(
-			@FormParam("lesson_id") int lesson_id,
-			@FormParam("lesson_course") int lesson_course,
+			@DefaultValue("-1") @FormParam("lesson_id") int lesson_id,
+			@DefaultValue("-1") @FormParam("lesson_course") int lesson_course,
 			@FormParam("lesson_name") String lesson_name,
-			@FormParam("lesson_status") int lesson_status
+			@DefaultValue("-1") @FormParam("lesson_status") int lesson_status
 			) {
 		if(courseDao.get(lesson_course) == null)
 			return responseDao.get(ResponseConst.ERROR_COURSE_DOES_NOT_EXIST);

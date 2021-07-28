@@ -3,6 +3,7 @@ package com.vocab.api;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -81,8 +82,8 @@ public class VocabAPI {
 	@Path("/save")
 	public Response save(
 			/* @FormParam("vocab_id") int vocab_id, */ 
-			@FormParam("vocab_type") int vocab_type,
-			@FormParam("vocab_lesson") int vocab_lesson, 
+			@DefaultValue("-1") @FormParam("vocab_type") int vocab_type,
+			@DefaultValue("-1") @FormParam("vocab_lesson") int vocab_lesson, 
 			@FormParam("vocab_en") String vocab_en,
 			@FormParam("vocab_ipa") String vocab_ipa,
 			@FormParam("vocab_vi") String vocab_vi,
@@ -114,9 +115,9 @@ public class VocabAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update")
 	public Response update(
-			@FormParam("vocab_id") int vocab_id, 
-			@FormParam("vocab_type") int vocab_type,
-			@FormParam("vocab_lesson") int vocab_lesson, 
+			@DefaultValue("-1") @FormParam("vocab_id") int vocab_id, 
+			@DefaultValue("-1") @FormParam("vocab_type") int vocab_type,
+			@DefaultValue("-1") @FormParam("vocab_lesson") int vocab_lesson, 
 			@FormParam("vocab_en") String vocab_en,
 			@FormParam("vocab_ipa") String vocab_ipa,
 			@FormParam("vocab_vi") String vocab_vi,

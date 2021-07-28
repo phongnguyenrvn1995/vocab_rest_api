@@ -3,6 +3,7 @@ package com.vocab.api;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -82,7 +83,7 @@ public class StatusAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update")
 	public Response update(
-			@FormParam("status_id") int status_id,
+			@DefaultValue("-1") @FormParam("status_id") int status_id,
 			@FormParam("status_description") String status_description
 			) {
 		Status status = new Status();

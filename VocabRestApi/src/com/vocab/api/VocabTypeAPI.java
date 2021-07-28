@@ -3,6 +3,7 @@ package com.vocab.api;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -78,7 +79,7 @@ public class VocabTypeAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update")
 	public Response update(
-			@FormParam("vocab_type_id") int vocab_type_id,
+			@DefaultValue("-1") @FormParam("vocab_type_id") int vocab_type_id,
 			@FormParam("vocab_type_name") String vocab_type_name
 			) {
 		VocabType vocabType = new VocabType();

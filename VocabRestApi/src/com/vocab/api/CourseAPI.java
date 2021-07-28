@@ -2,6 +2,7 @@ package com.vocab.api;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -75,7 +76,7 @@ public class CourseAPI {
 			@FormParam("course_name") String course_name,
 			@FormParam("course_description") String course_description,
 			@FormParam("course_date_creat") String course_date_creat,
-			@FormParam("course_status") int course_status			
+			@DefaultValue("-1") @FormParam("course_status") int course_status			
 			) {
 		if(statusDao.get(course_status) == null)
 			return responseDao.get(ResponseConst.ERROR_STATUS_DOES_NOT_EXIST);
@@ -92,11 +93,11 @@ public class CourseAPI {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update")
-	public Response update(@FormParam("course_id") int course_id,
+	public Response update(@DefaultValue("-1") @FormParam("course_id") int course_id,
 			@FormParam("course_name") String course_name,
 			@FormParam("course_description") String course_description,
 			@FormParam("course_date_creat") String course_date_creat,
-			@FormParam("course_status") int course_status) {
+			@DefaultValue("-1") @FormParam("course_status") int course_status) {
 		if(statusDao.get(course_status) == null)
 			return responseDao.get(ResponseConst.ERROR_STATUS_DOES_NOT_EXIST);
 		Course course = new Course();
