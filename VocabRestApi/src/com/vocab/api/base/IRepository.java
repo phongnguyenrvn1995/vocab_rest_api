@@ -42,6 +42,8 @@ public interface IRepository {
 	List<ILesson> getAllLessonByStatusID(int id, int limit, int offset);
 
 	List<IVocab> getAllVocab();
+	
+	List<IVocab> getAllVocab(int limit, int offset);
 
 	IVocab getVocab(int id);
 
@@ -65,7 +67,11 @@ public interface IRepository {
 
 	List<IVocab> getAllVocabByTypeID(int id);
 
+	List<IVocab> getAllVocabByTypeID(int id, int limit, int offset);
+
 	List<IVocab> getAllVocabByLessonID(int id);
+
+	List<IVocab> getAllVocabByLessonID(int id, int limit, int offset);
 
 	public List<IStatus> getAllStatus();
 

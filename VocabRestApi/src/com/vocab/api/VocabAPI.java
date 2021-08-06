@@ -43,19 +43,44 @@ public class VocabAPI {
 		return vocabDao.getAllByTypeID(id);
 	}
 
+	@Path("/gets_by_type/{id}/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vocab> getsByType(@PathParam("id") int id,
+			@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return vocabDao.getAllByTypeID(id, limit, offset);
+	}
+
 	@Path("/gets_by_lesson/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Vocab> getsByLesson(@PathParam("id") int id) {
 		return vocabDao.getAllByLessonID(id);
 	}
-	
+
+	@Path("/gets_by_lesson/{id}/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vocab> getsByLesson(@PathParam("id") int id,
+			@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return vocabDao.getAllByLessonID(id, limit, offset);
+	}
 
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Vocab> gets() {
 		return vocabDao.getAll();
+	}
+
+	@Path("/gets/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vocab> gets(@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return vocabDao.getAll(limit, offset);
 	}
 
 	@Path("/get/{id}")

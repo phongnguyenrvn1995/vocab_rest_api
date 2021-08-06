@@ -113,6 +113,11 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
+	public List<IVocab> getAllVocab(int limit, int offset) {
+		return VocabDBFunc.gets(limit, offset);
+	}
+
+	@Override
 	public IVocab getVocab(int id) {
 		return VocabDBFunc.get(id);
 	}
@@ -168,8 +173,18 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
+	public List<IVocab> getAllVocabByTypeID(int id, int limit, int offset) {
+		return VocabDBFunc.getAllByTypeID(id, limit, offset);
+	}
+
+	@Override
 	public List<IVocab> getAllVocabByLessonID(int id) {
 		return VocabDBFunc.getAllByLessonID(id);
+	}
+	
+	@Override
+	public List<IVocab> getAllVocabByLessonID(int id, int limit, int offset) {
+		return VocabDBFunc.getAllByLessonID(id, limit, offset);
 	}
 
 	@Override

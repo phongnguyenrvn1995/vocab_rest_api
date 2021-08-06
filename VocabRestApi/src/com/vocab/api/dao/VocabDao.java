@@ -26,8 +26,12 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 
 	@Override
 	public List<Vocab> getAll(int limit, int offset) {
-		// TODO Auto-generated method stub
-		return null;
+		List<IVocab> iList = iRepository.getAllVocab(limit, offset);
+		List<Vocab> list = new ArrayList<Vocab>();
+		for(IVocab iv : iList) {
+			list.add((Vocab) iv);
+		}
+		return list;
 	}
 
 	@Override
@@ -54,6 +58,16 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 		}
 		return list;
 	}
+	
+	@Override
+	public List<Vocab> getAllByLessonID(int id, int limit, int offset) {
+		List<IVocab> iList = iRepository.getAllVocabByLessonID(id, limit, offset);
+		List<Vocab> list = new ArrayList<Vocab>();
+		for(IVocab iv : iList) {
+			list.add((Vocab) iv);
+		}
+		return list;
+	}
 
 	@Override
 	public List<Vocab> getAllByTypeID(int id) {
@@ -64,4 +78,15 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 		}
 		return list;
 	}
+
+	@Override
+	public List<Vocab> getAllByTypeID(int id, int limit, int offset) {
+		List<IVocab> iList = iRepository.getAllVocabByTypeID(id, limit, offset);
+		List<Vocab> list = new ArrayList<Vocab>();
+		for(IVocab iv : iList) {
+			list.add((Vocab) iv);
+		}
+		return list;
+	}
+	
 }

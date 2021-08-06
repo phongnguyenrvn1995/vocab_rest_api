@@ -11,11 +11,20 @@ import com.vocab.api.pojo.Vocab;
 
 public class VocabDBFunc {
 
-	public static List<IVocab> gets() {
+	public static List<IVocab> gets(int...limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `vocab`";
+			String sql = "SELECT * FROM `vocab` LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+			
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			preparedStatement.setInt(1, limit);
+			preparedStatement.setInt(2, offset);
 			ResultSet rs = preparedStatement.executeQuery();
 			List<IVocab> list = new ArrayList<IVocab>();
 			while(rs.next()) {
@@ -130,12 +139,22 @@ public class VocabDBFunc {
 		return false;
 	}
 
-	public static List<IVocab> getAllByLessonID(int id) {
+	public static List<IVocab> getAllByLessonID(int id, int ...limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `vocab` WHERE vocab_lesson = ?";
+			String sql = "SELECT * FROM `vocab` WHERE vocab_lesson = ? LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+
+			if (limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
+
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(2, limit);
+			preparedStatement.setInt(3, offset);
 			ResultSet rs = preparedStatement.executeQuery();
 			List<IVocab> list = new ArrayList<IVocab>();
 			while(rs.next()) {
@@ -159,12 +178,22 @@ public class VocabDBFunc {
 		return null;
 	}
 
-	public static List<IVocab> getAllByTypeID(int id) {
+	public static List<IVocab> getAllByTypeID(int id, int ...limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `vocab`WHERE vocab_type = ?";
+			String sql = "SELECT * FROM `vocab`WHERE vocab_type = ? LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+
+			if (limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
+
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(2, limit);
+			preparedStatement.setInt(3, offset);
 			ResultSet rs = preparedStatement.executeQuery();
 			List<IVocab> list = new ArrayList<IVocab>();
 			while(rs.next()) {
