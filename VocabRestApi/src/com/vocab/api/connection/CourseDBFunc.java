@@ -63,8 +63,8 @@ public class CourseDBFunc {
 		int offset = 0;
 		
 		if(limitAndOffset.length == 2) {
-			limit = limitAndOffset[0];
-			offset = limitAndOffset[1];
+			limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+			offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 		}
 
 		try {
@@ -135,10 +135,12 @@ public class CourseDBFunc {
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 			
+
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
+
 			PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
 			statement.setInt(1, id);
 			statement.setInt(2, limit);

@@ -19,9 +19,10 @@ public class VocabDBFunc {
 			int offset = 0;
 			
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
+
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, limit);
 			preparedStatement.setInt(2, offset);
@@ -146,9 +147,9 @@ public class VocabDBFunc {
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 
-			if (limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
@@ -185,10 +186,11 @@ public class VocabDBFunc {
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 
-			if (limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
+
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);

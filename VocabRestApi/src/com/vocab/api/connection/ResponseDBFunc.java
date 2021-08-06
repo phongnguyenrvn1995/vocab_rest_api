@@ -17,10 +17,12 @@ public class ResponseDBFunc {
 			String sql = "SELECT * FROM `response_define` LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
+
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
+
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, limit);
 			preparedStatement.setInt(2, offset);			

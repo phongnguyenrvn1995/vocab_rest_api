@@ -18,8 +18,8 @@ public class LessonDBFunc {
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, limit);
@@ -126,10 +126,12 @@ public class LessonDBFunc {
 			String sql = "SELECT * FROM `lesson` WHERE lesson_course = ? LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
+
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
+
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.setInt(2, limit);
@@ -159,10 +161,12 @@ public class LessonDBFunc {
 			String sql = "SELECT * FROM `lesson` WHERE lesson_status = ? LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
+
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0];
-				offset = limitAndOffset[1];
+				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
+				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
 			}
+
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.setInt(2, limit);
