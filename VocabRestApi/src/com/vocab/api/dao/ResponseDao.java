@@ -21,8 +21,12 @@ public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 	
 	@Override
 	public List<Response> getAll(int limit, int offset) {
-		// TODO Auto-generated method stub
-		return null;
+		List<IResponse> iList = iRepository.getResponseAll(limit, offset);
+		List<Response> list = new ArrayList<Response>();
+		for(IResponse ir : iList) {
+			list.add((Response) ir);
+		}
+		return list;
 	}
 
 	@Override

@@ -77,6 +77,8 @@ public interface IRepository {
 
 	public List<IResponse> getResponseAll();
 
+	public List<IResponse> getResponseAll(int limit, int offset);
+
 	public IResponse getResponse(int id);
 
 	public boolean saveResponse(Response t);

@@ -34,6 +34,14 @@ public class ResponseAPI {
 		return responseDao.getAll();
 	}
 
+	@Path("/gets/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Response> gets(@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return responseDao.getAll(limit, offset);
+	}
+
 	@Path("/get/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

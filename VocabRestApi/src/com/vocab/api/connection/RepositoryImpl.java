@@ -198,6 +198,11 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
+	public List<IResponse> getResponseAll(int limit, int offset) {
+		return ResponseDBFunc.getAll(limit, offset);
+	}
+
+	@Override
 	public IResponse getResponse(int id) {
 		return ResponseDBFunc.get(id);
 	}
