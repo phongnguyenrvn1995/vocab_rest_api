@@ -21,8 +21,12 @@ public class StatusDao extends BaseDao implements IStatusDao<Status>{
 
 	@Override
 	public List<Status> getAll(int limit, int offset) {
-		// TODO Auto-generated method stub
-		return null;
+		List<IStatus> iList = iRepository.getAllStatus(limit, offset);
+		List<Status> list = new ArrayList<Status>();
+		for(IStatus is : iList) {
+			list.add((Status) is);
+		}
+		return list;
 	}
 
 	@Override

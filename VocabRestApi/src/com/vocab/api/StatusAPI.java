@@ -43,6 +43,14 @@ public class StatusAPI {
 		return statusDao.getAll();
 	}
 
+	@Path("/gets/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Status> gets(@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return statusDao.getAll(limit, offset);
+	}
+
 	@Path("/get/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

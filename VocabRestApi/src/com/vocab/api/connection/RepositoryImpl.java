@@ -173,6 +173,11 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
+	public List<IStatus> getAllStatus(int limit, int offset) {
+		return StatusDBFunc.getAll(limit, offset);
+	}
+
+	@Override
 	public IStatus getStatus(int id) {
 		return StatusDBFunc.get(id);
 	}

@@ -11,11 +11,22 @@ import com.vocab.api.pojo.Status;
 
 public class StatusDBFunc {
 
-	public static List<IStatus> getAll() {
+	public static List<IStatus> getAll(int...limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `status_define`";
+			String sql = "SELECT * FROM `status_define` LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+			
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
+
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			preparedStatement.setInt(1, limit);
+			preparedStatement.setInt(2, offset);
+			
 			ResultSet rs = preparedStatement.executeQuery();
 			List<IStatus> list = new ArrayList<IStatus>();
 			while (rs.next()) {

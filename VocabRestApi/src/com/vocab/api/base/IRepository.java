@@ -67,6 +67,8 @@ public interface IRepository {
 
 	public List<IStatus> getAllStatus();
 
+	public List<IStatus> getAllStatus(int limit, int offset);
+
 	public IStatus getStatus(int id);
 
 	public boolean saveStatus(IStatus t);
