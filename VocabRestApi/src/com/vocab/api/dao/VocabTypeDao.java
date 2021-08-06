@@ -20,7 +20,7 @@ public class VocabTypeDao extends BaseDao implements IVocabTypeDao<VocabType> {
 	}
 
 	@Override
-	public List<VocabType> getAll(int offset, int limit) {
+	public List<VocabType> getAll(int limit, int offset) {
 		// TODO Auto-generated method stub
 		return null;
 	}

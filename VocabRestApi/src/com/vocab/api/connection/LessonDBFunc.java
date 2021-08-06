@@ -11,11 +11,20 @@ import com.vocab.api.pojo.Lesson;
 
 public class LessonDBFunc {
 
-	public static List<ILesson> gets() {
+	public static List<ILesson> gets(int ... limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `lesson`";
+			String sql = "SELECT * FROM `lesson` LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			preparedStatement.setInt(1, limit);
+			preparedStatement.setInt(2, offset);
+			
 			ResultSet rs = preparedStatement.executeQuery();
 			List<ILesson> list = new ArrayList<ILesson>();
 			while (rs.next()) {
@@ -111,12 +120,20 @@ public class LessonDBFunc {
 		return false;
 	}
 
-	public static List<ILesson> getAllByCourseID(int id) {
+	public static List<ILesson> getAllByCourseID(int id, int... limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `lesson` WHERE lesson_course = ?";
+			String sql = "SELECT * FROM `lesson` WHERE lesson_course = ? LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(2, limit);
+			preparedStatement.setInt(3, offset);
 			ResultSet rs = preparedStatement.executeQuery();
 			List<ILesson> list = new ArrayList<ILesson>();
 			while (rs.next()) {
@@ -136,12 +153,21 @@ public class LessonDBFunc {
 		return null;
 	}
 
-	public static List<ILesson> getAllByStatusID(int id) {
+	public static List<ILesson> getAllByStatusID(int id, int... limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `lesson` WHERE lesson_status = ?";
+			String sql = "SELECT * FROM `lesson` WHERE lesson_status = ? LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(2, limit);
+			preparedStatement.setInt(3, offset);
+			
 			ResultSet rs = preparedStatement.executeQuery();
 			List<ILesson> list = new ArrayList<ILesson>();
 			while (rs.next()) {

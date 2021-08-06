@@ -45,6 +45,15 @@ public class LessonAPI {
 		return lessonDao.getAllByStatusID(id);
 	}
 
+	@Path("/get_by_status/{id}/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Lesson> getsByStatus(@PathParam("id") int id,
+			@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return lessonDao.getAllByStatusID(id, limit, offset);
+	}
+
 	@Path("/get_by_course/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -52,11 +61,27 @@ public class LessonAPI {
 		return lessonDao.getAllByCourseID(id);
 	}
 
+	@Path("/get_by_course/{id}/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Lesson> getsByCourse(@PathParam("id") int id,
+			@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return lessonDao.getAllByCourseID(id, limit, offset);
+	}
+
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Lesson> gets() {
 		return lessonDao.getAll();
+	}
+
+	@Path("/gets/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Lesson> gets(@PathParam("limit") int limit, @PathParam("offset") int offset) {
+		return lessonDao.getAll(limit, offset);
 	}
 
 	@Path("/get/{id}")

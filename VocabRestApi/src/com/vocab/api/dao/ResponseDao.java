@@ -20,7 +20,7 @@ public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 	}	
 	
 	@Override
-	public List<Response> getAll(int offset, int limit) {
+	public List<Response> getAll(int limit, int offset) {
 		// TODO Auto-generated method stub
 		return null;
 	}

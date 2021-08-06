@@ -58,6 +58,11 @@ public class RepositoryImpl implements IRepository{
 	public List<ILesson> getAllLesson() {
 		return LessonDBFunc.gets();
 	}
+	
+	@Override
+	public List<ILesson> getAllLesson(int limit, int offset) {
+		return LessonDBFunc.gets(limit, offset);
+	}
 
 	@Override
 	public ILesson getLesson(int id) {
@@ -87,8 +92,19 @@ public class RepositoryImpl implements IRepository{
 
 	
 	@Override
+	public List<ILesson> getAllLessonByCourseID(int id, int limit, int offset) {
+		return LessonDBFunc.getAllByCourseID(id, limit, offset);
+	}
+
+	@Override
 	public List<ILesson> getAllLessonByStatusID(int id) {
 		return LessonDBFunc.getAllByStatusID(id);
+	}
+	
+
+	@Override
+	public List<ILesson> getAllLessonByStatusID(int id, int limit, int offset) {
+		return LessonDBFunc.getAllByStatusID(id, limit, offset);
 	}
 
 	@Override

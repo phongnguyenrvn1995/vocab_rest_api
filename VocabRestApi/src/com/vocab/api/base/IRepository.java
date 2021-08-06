@@ -23,6 +23,8 @@ public interface IRepository {
 
 	List<ILesson> getAllLesson();
 
+	List<ILesson> getAllLesson(int limit, int offset);
+
 	ILesson getLesson(int id);
 
 	boolean saveLesson(ILesson t);
@@ -32,8 +34,12 @@ public interface IRepository {
 	boolean deleteLesson(ILesson t);
 
 	List<ILesson> getAllLessonByCourseID(int id);
+	
+	List<ILesson> getAllLessonByCourseID(int id, int limit, int offset);
 
 	List<ILesson> getAllLessonByStatusID(int id);
+	
+	List<ILesson> getAllLessonByStatusID(int id, int limit, int offset);
 
 	List<IVocab> getAllVocab();
 

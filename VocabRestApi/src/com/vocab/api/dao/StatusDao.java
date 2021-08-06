@@ -20,7 +20,7 @@ public class StatusDao extends BaseDao implements IStatusDao<Status>{
 	}
 
 	@Override
-	public List<Status> getAll(int offset, int limit) {
+	public List<Status> getAll(int limit, int offset) {
 		// TODO Auto-generated method stub
 		return null;
 	}
