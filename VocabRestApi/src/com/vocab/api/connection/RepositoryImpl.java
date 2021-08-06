@@ -17,6 +17,11 @@ public class RepositoryImpl implements IRepository{
 	public List<ICourse> getAllCourse() {
 		return CourseDBFunc.gets();
 	}
+	
+	@Override
+	public List<ICourse> getAllCourse(int limit, int offset) {
+		return CourseDBFunc.gets(limit, offset);
+	}
 
 	@Override
 	public ICourse getCourse(int id) {
@@ -42,6 +47,11 @@ public class RepositoryImpl implements IRepository{
 	@Override
 	public List<ICourse> getAllCourseByStatusID(int id) {
 		return CourseDBFunc.getAllByStatusID(id);
+	}
+
+	@Override
+	public List<ICourse> getAllCourseByStatusID(int id, int limit, int offset) {
+		return CourseDBFunc.getAllByStatusID(id, limit, offset);
 	}
 
 	@Override

@@ -20,6 +20,12 @@ public class VocabTypeDao extends BaseDao implements IVocabTypeDao<VocabType> {
 	}
 
 	@Override
+	public List<VocabType> getAll(int offset, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public VocabType get(int id) {
 		return (VocabType) iRepository.getVocabType(id);
 	}

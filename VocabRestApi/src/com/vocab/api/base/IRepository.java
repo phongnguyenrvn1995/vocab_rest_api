@@ -6,6 +6,8 @@ import com.vocab.api.pojo.Response;
 
 public interface IRepository {
 	List<ICourse> getAllCourse();
+	
+	List<ICourse> getAllCourse(int limit, int offset);
 
 	ICourse getCourse(int id);
 
@@ -16,6 +18,8 @@ public interface IRepository {
 	boolean deleteCourse(ICourse t);
 
 	List<ICourse> getAllCourseByStatusID(int id);
+	
+	List<ICourse> getAllCourseByStatusID(int id, int limit, int offset);
 
 	List<ILesson> getAllLesson();
 

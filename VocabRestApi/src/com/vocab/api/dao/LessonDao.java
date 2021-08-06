@@ -19,6 +19,16 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 		return list;
 	}
 
+	
+	
+	@Override
+	public List<Lesson> getAll(int offset, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 	@Override
 	public Lesson get(int id) {
 		return (Lesson) iRepository.getLesson(id);

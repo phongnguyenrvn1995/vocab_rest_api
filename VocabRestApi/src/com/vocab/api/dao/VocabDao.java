@@ -25,6 +25,12 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 
 	@Override
+	public List<Vocab> getAll(int offset, int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public boolean save(Vocab vocab) {
 		return iRepository.saveVocab(vocab);
 	}

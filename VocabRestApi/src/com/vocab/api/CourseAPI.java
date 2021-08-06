@@ -33,11 +33,20 @@ public class CourseAPI {
 		responseDao = new ResponseDao();
 	}
 
+	@Path("/get_by_status/{id}/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Course> getsByStatus(@PathParam("id") int id,
+			@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return courseDao.getAllByStatusID(id, limit, offset);
+	}
+	
 	@Path("/get_by_status/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Course> getsByStatus(@PathParam("id") int id) {
-		return courseDao.getAll();
+		return courseDao.getAllByStatusID(id);
 	}
 
 	@Path("/gets")
@@ -45,6 +54,14 @@ public class CourseAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Course> gets() {
 		return courseDao.getAll();
+	}
+
+	@Path("/gets/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Course> gets(@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return courseDao.getAll(limit, offset);
 	}
 
 	@Path("/get/{id}")

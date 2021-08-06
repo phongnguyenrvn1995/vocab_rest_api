@@ -17,6 +17,12 @@ public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 			list.add((Response) ir);
 		}
 		return list;
+	}	
+	
+	@Override
+	public List<Response> getAll(int offset, int limit) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
