@@ -138,6 +138,11 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
+	public List<IVocabType> getAllVocabType(int limit, int offset) {
+		return VocabTypeDBFunc.gets(limit, offset);
+	}
+
+	@Override
 	public IVocabType getVocabType(int id) {
 		return VocabTypeDBFunc.get(id);
 	}

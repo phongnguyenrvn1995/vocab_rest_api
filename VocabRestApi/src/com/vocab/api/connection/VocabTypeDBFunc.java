@@ -11,11 +11,19 @@ import com.vocab.api.pojo.VocabType;
 
 public class VocabTypeDBFunc {
 
-	public static List<IVocabType> gets() {
+	public static List<IVocabType> gets(int ...limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `vocab_type`";
+			String sql = "SELECT * FROM `vocab_type` LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[0];
+				offset = limitAndOffset[1];
+			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			preparedStatement.setInt(1, limit);
+			preparedStatement.setInt(2, offset);
 			ResultSet rs = preparedStatement.executeQuery();
 			List<IVocabType> list = new ArrayList<IVocabType>();
 			while (rs.next()) {

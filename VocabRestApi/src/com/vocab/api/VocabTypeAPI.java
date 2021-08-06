@@ -32,12 +32,20 @@ public class VocabTypeAPI {
 		vocabDao = new VocabDao();
 		responseDao = new ResponseDao();
 	}
-
+	
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<VocabType> gets() {
 		return vocabTypeDao.getAll();
+	}
+
+	@Path("/gets/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<VocabType> gets(@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return vocabTypeDao.getAll(limit, offset);
 	}
 
 	@Path("/get/{id}")

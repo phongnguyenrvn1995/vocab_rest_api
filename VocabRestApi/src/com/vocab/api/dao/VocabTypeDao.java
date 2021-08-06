@@ -21,8 +21,12 @@ public class VocabTypeDao extends BaseDao implements IVocabTypeDao<VocabType> {
 
 	@Override
 	public List<VocabType> getAll(int limit, int offset) {
-		// TODO Auto-generated method stub
-		return null;
+		List<IVocabType> iList = iRepository.getAllVocabType(limit, offset);
+		List<VocabType> list = new ArrayList<VocabType>();
+		for (IVocabType iv : iList) {
+			list.add((VocabType) iv);
+		}
+		return list;
 	}
 
 	@Override
@@ -43,5 +47,9 @@ public class VocabTypeDao extends BaseDao implements IVocabTypeDao<VocabType> {
 	@Override
 	public boolean delete(VocabType vocabType) {
 		return iRepository.deleteVocabType(vocabType);
+	}
+	
+	public static void main(String []a) {
+		System.out.println("ok");
 	}
 }
