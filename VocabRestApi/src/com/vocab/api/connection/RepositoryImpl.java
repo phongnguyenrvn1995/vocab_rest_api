@@ -218,13 +218,13 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
-	public List<IResponse> getResponseAll() {
-		return ResponseDBFunc.getAll();
+	public List<IResponse> getResponseAll(String searchStr) {
+		return ResponseDBFunc.getAll(searchStr);
 	}
 
 	@Override
-	public List<IResponse> getResponseAll(int limit, int offset) {
-		return ResponseDBFunc.getAll(limit, offset);
+	public List<IResponse> getResponseAll(String searchStr, int limit, int offset) {
+		return ResponseDBFunc.getAll(searchStr, limit, offset);
 	}
 
 	@Override

@@ -12,10 +12,10 @@ import com.vocab.consts.ParamsConsts;
 
 public class ResponseDBFunc {
 
-	public static List<IResponse> getAll(int...limitAndOffset) {
+	public static List<IResponse> getAll(String searchStr, int...limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `response_define` LIMIT ? OFFSET ?";
+			String sql = "SELECT * FROM `response_define` WHERE `response_description` LIKE ? LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 
@@ -25,8 +25,10 @@ public class ResponseDBFunc {
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
-			preparedStatement.setInt(1, limit);
-			preparedStatement.setInt(2, offset);			
+			int i = 0;
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setInt(++i, limit);
+			preparedStatement.setInt(++i, offset);			
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			List<IResponse> list = new ArrayList<IResponse>();

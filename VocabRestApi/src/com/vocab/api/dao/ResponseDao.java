@@ -11,7 +11,7 @@ public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 
 	@Override
 	public List<Response> getAll(String searchStr) {
-		List<IResponse> iList = iRepository.getResponseAll();
+		List<IResponse> iList = iRepository.getResponseAll(searchStr);
 		List<Response> list = new ArrayList<Response>();
 		for(IResponse ir : iList) {
 			list.add((Response) ir);
@@ -21,7 +21,7 @@ public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 	
 	@Override
 	public List<Response> getAll(String searchStr, int limit, int offset) {
-		List<IResponse> iList = iRepository.getResponseAll(limit, offset);
+		List<IResponse> iList = iRepository.getResponseAll(searchStr, limit, offset);
 		List<Response> list = new ArrayList<Response>();
 		for(IResponse ir : iList) {
 			list.add((Response) ir);

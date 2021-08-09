@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.vocab.api.dao.ResponseDao;
@@ -30,16 +31,17 @@ public class ResponseAPI {
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Response> gets() {
-		return responseDao.getAll(null);
+	public List<Response> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return responseDao.getAll(searchStr);
 	}
 
 	@Path("/gets/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Response> gets(@PathParam("limit") int limit, 
+	public List<Response> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return responseDao.getAll(null, limit, offset);
+		return responseDao.getAll(searchStr, limit, offset);
 	}
 
 	@Path("/get/{id}")

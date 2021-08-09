@@ -85,9 +85,9 @@ public interface IRepository {
 
 	public boolean deleteStatus(IStatus t);
 
-	public List<IResponse> getResponseAll();
+	public List<IResponse> getResponseAll(String searchStr);
 
-	public List<IResponse> getResponseAll(int limit, int offset);
+	public List<IResponse> getResponseAll(String searchStr, int limit, int offset);
 
 	public IResponse getResponse(int id);
 
