@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.vocab.api.dao.LessonDao;
@@ -39,48 +40,53 @@ public class VocabAPI {
 	@Path("/gets_by_type/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vocab> getsByType(@PathParam("id") int id) {
-		return vocabDao.getAllByTypeID(id);
+	public List<Vocab> getsByType(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return vocabDao.getAllByTypeID(searchStr, id);
 	}
 
 	@Path("/gets_by_type/{id}/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vocab> getsByType(@PathParam("id") int id,
+	public List<Vocab> getsByType(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id,
 			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return vocabDao.getAllByTypeID(id, limit, offset);
+		return vocabDao.getAllByTypeID(searchStr, id, limit, offset);
 	}
 
 	@Path("/gets_by_lesson/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vocab> getsByLesson(@PathParam("id") int id) {
-		return vocabDao.getAllByLessonID(id);
+	public List<Vocab> getsByLesson(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return vocabDao.getAllByLessonID(searchStr, id);
 	}
 
 	@Path("/gets_by_lesson/{id}/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vocab> getsByLesson(@PathParam("id") int id,
+	public List<Vocab> getsByLesson(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id,
 			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return vocabDao.getAllByLessonID(id, limit, offset);
+		return vocabDao.getAllByLessonID(searchStr, id, limit, offset);
 	}
 
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vocab> gets() {
-		return vocabDao.getAll(null);
+	public List<Vocab> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return vocabDao.getAll(searchStr);
 	}
 
 	@Path("/gets/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vocab> gets(@PathParam("limit") int limit, 
+	public List<Vocab> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return vocabDao.getAll(null, limit, offset);
+		return vocabDao.getAll(searchStr, limit, offset);
 	}
 
 	@Path("/get/{id}")

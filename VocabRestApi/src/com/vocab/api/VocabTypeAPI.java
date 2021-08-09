@@ -66,7 +66,7 @@ public class VocabTypeAPI {
 		VocabType vocabType = vocabTypeDao.get(id);
 		if(vocabType == null)
 			return responseDao.get(ResponseConst.SUCCESS);
-		if(vocabDao.getAllByTypeID(id).size() > 0)
+		if(vocabDao.getAllByTypeID("", id).size() > 0)
 			return responseDao.get(ResponseConst.DEL_VOCAB_TYPE_ERROR_EXISTING_VOCAB_USES_TYPE);
 		return vocabTypeDao.delete(vocabType) ? 
 				responseDao.get(ResponseConst.SUCCESS) :

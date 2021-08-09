@@ -108,13 +108,13 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
-	public List<IVocab> getAllVocab() {
-		return VocabDBFunc.gets();
+	public List<IVocab> getAllVocab(String searchStr) {
+		return VocabDBFunc.gets(searchStr);
 	}
 
 	@Override
-	public List<IVocab> getAllVocab(int limit, int offset) {
-		return VocabDBFunc.gets(limit, offset);
+	public List<IVocab> getAllVocab(String searchStr, int limit, int offset) {
+		return VocabDBFunc.gets(searchStr, limit, offset);
 	}
 
 	@Override
@@ -168,23 +168,23 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
-	public List<IVocab> getAllVocabByTypeID(int id) {
-		return VocabDBFunc.getAllByTypeID(id);
+	public List<IVocab> getAllVocabByTypeID(String searchStr, int id) {
+		return VocabDBFunc.getAllByTypeID(searchStr, id);
 	}
 
 	@Override
-	public List<IVocab> getAllVocabByTypeID(int id, int limit, int offset) {
-		return VocabDBFunc.getAllByTypeID(id, limit, offset);
+	public List<IVocab> getAllVocabByTypeID(String searchStr, int id, int limit, int offset) {
+		return VocabDBFunc.getAllByTypeID(searchStr, id, limit, offset);
 	}
 
 	@Override
-	public List<IVocab> getAllVocabByLessonID(int id) {
-		return VocabDBFunc.getAllByLessonID(id);
+	public List<IVocab> getAllVocabByLessonID(String searchStr, int id) {
+		return VocabDBFunc.getAllByLessonID(searchStr, id);
 	}
 	
 	@Override
-	public List<IVocab> getAllVocabByLessonID(int id, int limit, int offset) {
-		return VocabDBFunc.getAllByLessonID(id, limit, offset);
+	public List<IVocab> getAllVocabByLessonID(String searchStr, int id, int limit, int offset) {
+		return VocabDBFunc.getAllByLessonID(searchStr, id, limit, offset);
 	}
 
 	@Override

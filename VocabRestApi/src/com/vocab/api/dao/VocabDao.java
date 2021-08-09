@@ -11,7 +11,7 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 
 	@Override
 	public List<Vocab> getAll(String searchStr) {
-		List<IVocab> iList = iRepository.getAllVocab();
+		List<IVocab> iList = iRepository.getAllVocab(searchStr);
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {
 			list.add((Vocab) iv);
@@ -26,7 +26,7 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 
 	@Override
 	public List<Vocab> getAll(String searchStr, int limit, int offset) {
-		List<IVocab> iList = iRepository.getAllVocab(limit, offset);
+		List<IVocab> iList = iRepository.getAllVocab(searchStr, limit, offset);
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {
 			list.add((Vocab) iv);
@@ -50,8 +50,8 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 
 	@Override
-	public List<Vocab> getAllByLessonID(int id) {
-		List<IVocab> iList = iRepository.getAllVocabByLessonID(id);
+	public List<Vocab> getAllByLessonID(String searchStr, int id) {
+		List<IVocab> iList = iRepository.getAllVocabByLessonID(searchStr, id);
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {
 			list.add((Vocab) iv);
@@ -60,8 +60,8 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 	
 	@Override
-	public List<Vocab> getAllByLessonID(int id, int limit, int offset) {
-		List<IVocab> iList = iRepository.getAllVocabByLessonID(id, limit, offset);
+	public List<Vocab> getAllByLessonID(String searchStr, int id, int limit, int offset) {
+		List<IVocab> iList = iRepository.getAllVocabByLessonID(searchStr, id, limit, offset);
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {
 			list.add((Vocab) iv);
@@ -70,8 +70,8 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 
 	@Override
-	public List<Vocab> getAllByTypeID(int id) {
-		List<IVocab> iList = iRepository.getAllVocabByTypeID(id);
+	public List<Vocab> getAllByTypeID(String searchStr, int id) {
+		List<IVocab> iList = iRepository.getAllVocabByTypeID(searchStr, id);
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {
 			list.add((Vocab) iv);
@@ -80,8 +80,8 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 
 	@Override
-	public List<Vocab> getAllByTypeID(int id, int limit, int offset) {
-		List<IVocab> iList = iRepository.getAllVocabByTypeID(id, limit, offset);
+	public List<Vocab> getAllByTypeID(String searchStr, int id, int limit, int offset) {
+		List<IVocab> iList = iRepository.getAllVocabByTypeID(searchStr, id, limit, offset);
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {
 			list.add((Vocab) iv);

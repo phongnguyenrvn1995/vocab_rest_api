@@ -104,7 +104,7 @@ public class LessonAPI {
 		Lesson lesson = lessonDao.get(id);
 		if(lesson == null)
 			return responseDao.get(ResponseConst.SUCCESS);
-		if(vocabDao.getAllByLessonID(id).size() > 0)
+		if(vocabDao.getAllByLessonID("", id).size() > 0)
 			return responseDao.get(ResponseConst.DEL_LESSON_ERROR_EXISTING_VOCAB_IN_LESSON);
 		return lessonDao.delete(lesson) ? 
 				responseDao.get(ResponseConst.SUCCESS) :

@@ -41,9 +41,9 @@ public interface IRepository {
 	
 	List<ILesson> getAllLessonByStatusID(String searchStr, int id, int limit, int offset);
 
-	List<IVocab> getAllVocab();
+	List<IVocab> getAllVocab(String searchStr);
 	
-	List<IVocab> getAllVocab(int limit, int offset);
+	List<IVocab> getAllVocab(String searchStr, int limit, int offset);
 
 	IVocab getVocab(int id);
 
@@ -65,13 +65,13 @@ public interface IRepository {
 
 	boolean deleteVocabType(IVocabType t);
 
-	List<IVocab> getAllVocabByTypeID(int id);
+	List<IVocab> getAllVocabByTypeID(String searchStr, int id);
 
-	List<IVocab> getAllVocabByTypeID(int id, int limit, int offset);
+	List<IVocab> getAllVocabByTypeID(String searchStr, int id, int limit, int offset);
 
-	List<IVocab> getAllVocabByLessonID(int id);
+	List<IVocab> getAllVocabByLessonID(String searchStr, int id);
 
-	List<IVocab> getAllVocabByLessonID(int id, int limit, int offset);
+	List<IVocab> getAllVocabByLessonID(String searchStr, int id, int limit, int offset);
 
 	public List<IStatus> getAllStatus(String searchStr);
 
