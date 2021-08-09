@@ -57,9 +57,9 @@ public class CourseDBFunc {
 		return null;
 	}
 
-	public static List<ICourse> gets(int...limitAndOffset) {
+	public static List<ICourse> gets(String searchStr, int...limitAndOffset) {
 		GlobalConnection.open();
-		String sql = "SELECT * FROM `course` LIMIT ? OFFSET ?";
+		String sql = "SELECT * FROM `course`  WHERE `course_name` LIKE ? LIMIT ? OFFSET ?";
 		int limit = Integer.MAX_VALUE;
 		int offset = 0;
 		
@@ -70,8 +70,10 @@ public class CourseDBFunc {
 
 		try {
 			PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
-			statement.setInt(1, limit);
-			statement.setInt(2, offset);
+			int i = 0;
+			statement.setString(++i, "%" + searchStr + "%");
+			statement.setInt(++i, limit);
+			statement.setInt(++i, offset);
 			ResultSet rs = statement.executeQuery();
 			List<ICourse> list = new ArrayList<ICourse>();
 			while (rs.next()) {
@@ -128,10 +130,12 @@ public class CourseDBFunc {
 		return false;
 	}
 
-	public static List<ICourse> getAllByStatusID(int id, int ...limitAndOffset ) {
+	public static List<ICourse> getAllByStatusID(String searchStr, int id, int ...limitAndOffset ) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `course` WHERE course_status = ? LIMIT ? OFFSET ?";
+			String sql = "SELECT * FROM `course` "
+					+ "WHERE course_status = ? AND `course_name` LIKE ?"
+					+ "LIMIT ? OFFSET ?";
 
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
@@ -143,9 +147,11 @@ public class CourseDBFunc {
 			}
 
 			PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
-			statement.setInt(1, id);
-			statement.setInt(2, limit);
-			statement.setInt(3, offset);
+			int i = 0;
+			statement.setInt(++i, id);
+			statement.setString(++i, "%" + searchStr +"%");
+			statement.setInt(++i, limit);
+			statement.setInt(++i, offset);
 			ResultSet rs = statement.executeQuery();
 			List<ICourse> list = new ArrayList<ICourse>();
 			while (rs.next()) {

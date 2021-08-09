@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import com.vocab.api.dao.CourseDao;
 import com.vocab.api.dao.LessonDao;
@@ -36,32 +37,35 @@ public class CourseAPI {
 	@Path("/get_by_status/{id}/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Course> getsByStatus(@PathParam("id") int id,
+	public List<Course> getsByStatus(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id,
 			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return courseDao.getAllByStatusID(id, limit, offset);
+		return courseDao.getAllByStatusID(searchStr, id, limit, offset);
 	}
 	
 	@Path("/get_by_status/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Course> getsByStatus(@PathParam("id") int id) {
-		return courseDao.getAllByStatusID(id);
+	public List<Course> getsByStatus(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return courseDao.getAllByStatusID(searchStr, id);
 	}
 
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Course> gets() {
-		return courseDao.getAll(null);
+	public List<Course> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return courseDao.getAll(searchStr);
 	}
 
 	@Path("/gets/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Course> gets(@PathParam("limit") int limit, 
+	public List<Course> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return courseDao.getAll(null, limit, offset);
+		return courseDao.getAll(searchStr, limit, offset);
 	}
 
 	@Path("/get/{id}")

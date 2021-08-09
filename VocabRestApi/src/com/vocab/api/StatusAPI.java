@@ -67,7 +67,7 @@ public class StatusAPI {
 		Status status = statusDao.get(id);
 		if(status == null)
 			return responseDao.get(ResponseConst.SUCCESS);
-		if(courseDao.getAllByStatusID(id).size() > 0)
+		if(courseDao.getAllByStatusID("", id).size() > 0)
 			return responseDao.get(ResponseConst.DEL_STATUS_ERROR_EXISTING_COURSE_USES_STATUS);
 		if(lessonDao.getAllByStatusID(id).size() > 0)
 			return responseDao.get(ResponseConst.DEL_STATUS_ERROR_EXISTING_LESSON_USES_STATUS);

@@ -14,13 +14,13 @@ import com.vocab.api.pojo.Response;
 public class RepositoryImpl implements IRepository{
 
 	@Override
-	public List<ICourse> getAllCourse() {
-		return CourseDBFunc.gets();
+	public List<ICourse> getAllCourse(String searchStr) {
+		return CourseDBFunc.gets(searchStr);
 	}
 	
 	@Override
-	public List<ICourse> getAllCourse(int limit, int offset) {
-		return CourseDBFunc.gets(limit, offset);
+	public List<ICourse> getAllCourse(String searchStr, int limit, int offset) {
+		return CourseDBFunc.gets(searchStr, limit, offset);
 	}
 
 	@Override
@@ -45,13 +45,13 @@ public class RepositoryImpl implements IRepository{
 
 		
 	@Override
-	public List<ICourse> getAllCourseByStatusID(int id) {
-		return CourseDBFunc.getAllByStatusID(id);
+	public List<ICourse> getAllCourseByStatusID(String searchStr, int id) {
+		return CourseDBFunc.getAllByStatusID(searchStr, id);
 	}
 
 	@Override
-	public List<ICourse> getAllCourseByStatusID(int id, int limit, int offset) {
-		return CourseDBFunc.getAllByStatusID(id, limit, offset);
+	public List<ICourse> getAllCourseByStatusID(String searchStr, int id, int limit, int offset) {
+		return CourseDBFunc.getAllByStatusID(searchStr, id, limit, offset);
 	}
 
 	@Override

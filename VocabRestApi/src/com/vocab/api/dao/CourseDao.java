@@ -12,7 +12,7 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 
 	@Override
 	public List<Course> getAll(String searchStr) {
-		List<ICourse> iList = iRepository.getAllCourse();
+		List<ICourse> iList = iRepository.getAllCourse(searchStr);
 		List<Course> list = new ArrayList<Course>();
 		for(ICourse ic : iList) {
 			list.add((Course) ic);
@@ -23,7 +23,7 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 
 	@Override
 	public List<Course> getAll(String searchStr, int limit, int offset) {
-		List<ICourse> iList = iRepository.getAllCourse(limit, offset);
+		List<ICourse> iList = iRepository.getAllCourse(searchStr, limit, offset);
 		List<Course> list = new ArrayList<Course>();
 		for(ICourse ic : iList) {
 			list.add((Course) ic);
@@ -53,8 +53,8 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 	}
 
 	@Override
-	public List<Course> getAllByStatusID(int id) {
-		List<ICourse> iList = iRepository.getAllCourseByStatusID(id);
+	public List<Course> getAllByStatusID(String searchStr, int id) {
+		List<ICourse> iList = iRepository.getAllCourseByStatusID(searchStr, id);
 		List<Course> list = new ArrayList<Course>();
 		for(ICourse ic : iList) {
 			list.add((Course) ic);
@@ -65,8 +65,8 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 	
 	
 	@Override
-	public List<Course> getAllByStatusID(int id, int limit, int offset) {
-		List<ICourse> iList = iRepository.getAllCourseByStatusID(id, limit, offset);
+	public List<Course> getAllByStatusID(String searchStr, int id, int limit, int offset) {
+		List<ICourse> iList = iRepository.getAllCourseByStatusID(searchStr, id, limit, offset);
 		List<Course> list = new ArrayList<Course>();
 		for(ICourse ic : iList) {
 			list.add((Course) ic);
