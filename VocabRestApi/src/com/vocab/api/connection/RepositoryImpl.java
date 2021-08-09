@@ -10,7 +10,6 @@ import com.vocab.api.base.IStatus;
 import com.vocab.api.base.IVocab;
 import com.vocab.api.base.IVocabType;
 import com.vocab.api.pojo.Response;
-import com.vocab.consts.ParamsConsts;
 
 public class RepositoryImpl implements IRepository{
 
@@ -189,13 +188,13 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
-	public List<IStatus> getAllStatus() {
-		return StatusDBFunc.getAll();
+	public List<IStatus> getAllStatus(String searchStr) {
+		return StatusDBFunc.getAll(searchStr);
 	}
 
 	@Override
-	public List<IStatus> getAllStatus(int limit, int offset) {
-		return StatusDBFunc.getAll(limit, offset);
+	public List<IStatus> getAllStatus(String searchStr, int limit, int offset) {
+		return StatusDBFunc.getAll(searchStr, limit, offset);
 	}
 
 	@Override

@@ -12,10 +12,10 @@ import com.vocab.consts.ParamsConsts;
 
 public class StatusDBFunc {
 
-	public static List<IStatus> getAll(int...limitAndOffset) {
+	public static List<IStatus> getAll(String searchStr, int...limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `status_define` LIMIT ? OFFSET ?";
+			String sql = "SELECT * FROM `status_define` WHERE `status_description` LIKE ? LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 
@@ -25,8 +25,10 @@ public class StatusDBFunc {
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
-			preparedStatement.setInt(1, limit);
-			preparedStatement.setInt(2, offset);
+			int i = 0;
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setInt(++i, limit);
+			preparedStatement.setInt(++i, offset);
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			List<IStatus> list = new ArrayList<IStatus>();

@@ -73,9 +73,9 @@ public interface IRepository {
 
 	List<IVocab> getAllVocabByLessonID(int id, int limit, int offset);
 
-	public List<IStatus> getAllStatus();
+	public List<IStatus> getAllStatus(String searchStr);
 
-	public List<IStatus> getAllStatus(int limit, int offset);
+	public List<IStatus> getAllStatus(String searchStr, int limit, int offset);
 
 	public IStatus getStatus(int id);
 

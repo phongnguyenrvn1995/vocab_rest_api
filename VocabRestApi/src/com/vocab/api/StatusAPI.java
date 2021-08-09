@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.vocab.api.dao.CourseDao;
@@ -39,16 +40,17 @@ public class StatusAPI {
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Status> gets() {
-		return statusDao.getAll(null);
+	public List<Status> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return statusDao.getAll(searchStr);
 	}
 
 	@Path("/gets/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Status> gets(@PathParam("limit") int limit, 
+	public List<Status> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return statusDao.getAll(null, limit, offset);
+		return statusDao.getAll(searchStr, limit, offset);
 	}
 
 	@Path("/get/{id}")

@@ -11,7 +11,7 @@ public class StatusDao extends BaseDao implements IStatusDao<Status>{
 
 	@Override
 	public List<Status> getAll(String searchStr) {
-		List<IStatus> iList = iRepository.getAllStatus();
+		List<IStatus> iList = iRepository.getAllStatus(searchStr);
 		List<Status> list = new ArrayList<Status>();
 		for(IStatus is : iList) {
 			list.add((Status) is);
@@ -21,7 +21,7 @@ public class StatusDao extends BaseDao implements IStatusDao<Status>{
 
 	@Override
 	public List<Status> getAll(String searchStr, int limit, int offset) {
-		List<IStatus> iList = iRepository.getAllStatus(limit, offset);
+		List<IStatus> iList = iRepository.getAllStatus(searchStr, limit, offset);
 		List<Status> list = new ArrayList<Status>();
 		for(IStatus is : iList) {
 			list.add((Status) is);
