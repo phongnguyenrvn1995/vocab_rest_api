@@ -10,7 +10,7 @@ import com.vocab.api.pojo.Vocab;
 public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 
 	@Override
-	public List<Vocab> getAll() {
+	public List<Vocab> getAll(String searchStr) {
 		List<IVocab> iList = iRepository.getAllVocab();
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {
@@ -25,7 +25,7 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 
 	@Override
-	public List<Vocab> getAll(int limit, int offset) {
+	public List<Vocab> getAll(String searchStr, int limit, int offset) {
 		List<IVocab> iList = iRepository.getAllVocab(limit, offset);
 		List<Vocab> list = new ArrayList<Vocab>();
 		for(IVocab iv : iList) {

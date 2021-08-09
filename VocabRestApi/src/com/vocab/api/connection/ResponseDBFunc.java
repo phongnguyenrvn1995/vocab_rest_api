@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.vocab.api.base.IResponse;
 import com.vocab.api.pojo.Response;
+import com.vocab.consts.ParamsConsts;
 
 public class ResponseDBFunc {
 
@@ -19,8 +20,8 @@ public class ResponseDBFunc {
 			int offset = 0;
 
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
-				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
+				limit = limitAndOffset[ParamsConsts.IDX_LIMIT] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_LIMIT];
+				offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);

@@ -53,9 +53,9 @@ public interface IRepository {
 
 	boolean deleteVocab(IVocab t);
 
-	List<IVocabType> getAllVocabType();
+	List<IVocabType> getAllVocabType(String searchStr);
 	
-	List<IVocabType> getAllVocabType(int limit, int offset);
+	List<IVocabType> getAllVocabType(String searchStr, int limit, int offset);
 
 	IVocabType getVocabType(int id);
 

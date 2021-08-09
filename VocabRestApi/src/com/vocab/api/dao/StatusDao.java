@@ -10,7 +10,7 @@ import com.vocab.api.pojo.Status;
 public class StatusDao extends BaseDao implements IStatusDao<Status>{
 
 	@Override
-	public List<Status> getAll() {
+	public List<Status> getAll(String searchStr) {
 		List<IStatus> iList = iRepository.getAllStatus();
 		List<Status> list = new ArrayList<Status>();
 		for(IStatus is : iList) {
@@ -20,7 +20,7 @@ public class StatusDao extends BaseDao implements IStatusDao<Status>{
 	}
 
 	@Override
-	public List<Status> getAll(int limit, int offset) {
+	public List<Status> getAll(String searchStr, int limit, int offset) {
 		List<IStatus> iList = iRepository.getAllStatus(limit, offset);
 		List<Status> list = new ArrayList<Status>();
 		for(IStatus is : iList) {

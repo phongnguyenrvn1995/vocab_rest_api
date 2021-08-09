@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.vocab.api.dao.ResponseDao;
@@ -36,16 +37,19 @@ public class VocabTypeAPI {
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<VocabType> gets() {
-		return vocabTypeDao.getAll();
+	public List<VocabType> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		System.out.println(searchStr);
+		return vocabTypeDao.getAll(searchStr);
 	}
 
 	@Path("/gets/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<VocabType> gets(@PathParam("limit") int limit, 
+	public List<VocabType> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr, 
+			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return vocabTypeDao.getAll(limit, offset);
+		System.out.println(searchStr);
+		return vocabTypeDao.getAll(searchStr, limit, offset);
 	}
 
 	@Path("/get/{id}")

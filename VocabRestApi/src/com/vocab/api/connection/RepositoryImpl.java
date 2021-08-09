@@ -10,6 +10,7 @@ import com.vocab.api.base.IStatus;
 import com.vocab.api.base.IVocab;
 import com.vocab.api.base.IVocabType;
 import com.vocab.api.pojo.Response;
+import com.vocab.consts.ParamsConsts;
 
 public class RepositoryImpl implements IRepository{
 
@@ -138,13 +139,13 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
-	public List<IVocabType> getAllVocabType() {
-		return VocabTypeDBFunc.gets();
+	public List<IVocabType> getAllVocabType(String searchStr) {
+		return VocabTypeDBFunc.gets(searchStr);
 	}
 
 	@Override
-	public List<IVocabType> getAllVocabType(int limit, int offset) {
-		return VocabTypeDBFunc.gets(limit, offset);
+	public List<IVocabType> getAllVocabType(String searchStr, int limit, int offset) {
+		return VocabTypeDBFunc.gets(searchStr, limit, offset);
 	}
 
 	@Override

@@ -5,14 +5,13 @@ import java.util.List;
 
 import com.vocab.api.base.IVocabType;
 import com.vocab.api.dao.base.IVocabTypeDao;
-import com.vocab.api.pojo.Vocab;
 import com.vocab.api.pojo.VocabType;
 
 public class VocabTypeDao extends BaseDao implements IVocabTypeDao<VocabType> {
 
 	@Override
-	public List<VocabType> getAll() {
-		List<IVocabType> iList = iRepository.getAllVocabType();
+	public List<VocabType> getAll(String searchStr) {
+		List<IVocabType> iList = iRepository.getAllVocabType(searchStr);
 		List<VocabType> list = new ArrayList<VocabType>();
 		for (IVocabType iv : iList) {
 			list.add((VocabType) iv);
@@ -21,8 +20,8 @@ public class VocabTypeDao extends BaseDao implements IVocabTypeDao<VocabType> {
 	}
 
 	@Override
-	public List<VocabType> getAll(int limit, int offset) {
-		List<IVocabType> iList = iRepository.getAllVocabType(limit, offset);
+	public List<VocabType> getAll(String searchStr, int limit, int offset) {
+		List<IVocabType> iList = iRepository.getAllVocabType(searchStr, limit, offset);
 		List<VocabType> list = new ArrayList<VocabType>();
 		for (IVocabType iv : iList) {
 			list.add((VocabType) iv);

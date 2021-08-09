@@ -31,7 +31,7 @@ public class ResponseAPI {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Response> gets() {
-		return responseDao.getAll();
+		return responseDao.getAll(null);
 	}
 
 	@Path("/gets/{limit}/{offset}")
@@ -39,7 +39,7 @@ public class ResponseAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Response> gets(@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return responseDao.getAll(limit, offset);
+		return responseDao.getAll(null, limit, offset);
 	}
 
 	@Path("/get/{id}")

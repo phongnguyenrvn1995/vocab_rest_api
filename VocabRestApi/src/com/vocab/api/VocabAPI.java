@@ -72,7 +72,7 @@ public class VocabAPI {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Vocab> gets() {
-		return vocabDao.getAll();
+		return vocabDao.getAll(null);
 	}
 
 	@Path("/gets/{limit}/{offset}")
@@ -80,7 +80,7 @@ public class VocabAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Vocab> gets(@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return vocabDao.getAll(limit, offset);
+		return vocabDao.getAll(null, limit, offset);
 	}
 
 	@Path("/get/{id}")

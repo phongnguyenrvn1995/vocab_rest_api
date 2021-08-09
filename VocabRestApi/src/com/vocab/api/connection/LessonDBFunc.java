@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.vocab.api.base.ILesson;
 import com.vocab.api.pojo.Lesson;
+import com.vocab.consts.ParamsConsts;
 
 public class LessonDBFunc {
 
@@ -18,8 +19,8 @@ public class LessonDBFunc {
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
-				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
+				limit = limitAndOffset[ParamsConsts.IDX_LIMIT] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_LIMIT];
+				offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
 			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, limit);
@@ -128,8 +129,8 @@ public class LessonDBFunc {
 			int offset = 0;
 
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
-				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
+				limit = limitAndOffset[ParamsConsts.IDX_LIMIT] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_LIMIT];
+				offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
@@ -163,8 +164,8 @@ public class LessonDBFunc {
 			int offset = 0;
 
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
-				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
+				limit = limitAndOffset[ParamsConsts.IDX_LIMIT] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_LIMIT];
+				offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);

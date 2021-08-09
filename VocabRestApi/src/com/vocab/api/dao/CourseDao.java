@@ -11,7 +11,7 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 
 
 	@Override
-	public List<Course> getAll() {
+	public List<Course> getAll(String searchStr) {
 		List<ICourse> iList = iRepository.getAllCourse();
 		List<Course> list = new ArrayList<Course>();
 		for(ICourse ic : iList) {
@@ -22,7 +22,7 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 	
 
 	@Override
-	public List<Course> getAll(int limit, int offset) {
+	public List<Course> getAll(String searchStr, int limit, int offset) {
 		List<ICourse> iList = iRepository.getAllCourse(limit, offset);
 		List<Course> list = new ArrayList<Course>();
 		for(ICourse ic : iList) {

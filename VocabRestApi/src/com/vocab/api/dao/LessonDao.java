@@ -10,7 +10,7 @@ import com.vocab.api.pojo.Lesson;
 public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 
 	@Override
-	public List<Lesson> getAll() {
+	public List<Lesson> getAll(String searchStr) {
 		List<ILesson> iList = iRepository.getAllLesson();
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
@@ -20,7 +20,7 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 	}
 
 	@Override
-	public List<Lesson> getAll(int limit, int offset) {
+	public List<Lesson> getAll(String searchStr, int limit, int offset) {
 		List<ILesson> iList = iRepository.getAllLesson(limit, offset);
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
@@ -93,18 +93,6 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 	
 	public static void main(String[]a) {
 		System.out.println("ok");
-		LessonDao dao = new LessonDao();
-		List<Lesson> list = dao.getAll();
-		for(Lesson l : list) {
-			System.out.println(l.getLesson_name());
-		}
-//		for(int i = 0; i < 20; i++) {
-//			Lesson ls = new Lesson();
-//			ls.setLesson_course(i > 5 ? 2 : 1);
-//			ls.setLesson_name("lession 100" + i);
-//			ls.setLesson_status(0);
-//			dao.save(ls);
-//		}
 	}
 	
 }

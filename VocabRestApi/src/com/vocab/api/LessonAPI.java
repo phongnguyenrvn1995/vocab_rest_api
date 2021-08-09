@@ -74,14 +74,14 @@ public class LessonAPI {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Lesson> gets() {
-		return lessonDao.getAll();
+		return lessonDao.getAll(null);
 	}
 
 	@Path("/gets/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Lesson> gets(@PathParam("limit") int limit, @PathParam("offset") int offset) {
-		return lessonDao.getAll(limit, offset);
+		return lessonDao.getAll(null, limit, offset);
 	}
 
 	@Path("/get/{id}")

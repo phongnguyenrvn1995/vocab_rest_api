@@ -10,7 +10,7 @@ import com.vocab.api.pojo.Response;
 public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 
 	@Override
-	public List<Response> getAll() {
+	public List<Response> getAll(String searchStr) {
 		List<IResponse> iList = iRepository.getResponseAll();
 		List<Response> list = new ArrayList<Response>();
 		for(IResponse ir : iList) {
@@ -20,7 +20,7 @@ public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 	}	
 	
 	@Override
-	public List<Response> getAll(int limit, int offset) {
+	public List<Response> getAll(String searchStr, int limit, int offset) {
 		List<IResponse> iList = iRepository.getResponseAll(limit, offset);
 		List<Response> list = new ArrayList<Response>();
 		for(IResponse ir : iList) {

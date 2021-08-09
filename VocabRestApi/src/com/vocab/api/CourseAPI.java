@@ -53,7 +53,7 @@ public class CourseAPI {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Course> gets() {
-		return courseDao.getAll();
+		return courseDao.getAll(null);
 	}
 
 	@Path("/gets/{limit}/{offset}")
@@ -61,7 +61,7 @@ public class CourseAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Course> gets(@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return courseDao.getAll(limit, offset);
+		return courseDao.getAll(null, limit, offset);
 	}
 
 	@Path("/get/{id}")

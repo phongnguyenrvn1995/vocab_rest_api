@@ -40,7 +40,7 @@ public class StatusAPI {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Status> gets() {
-		return statusDao.getAll();
+		return statusDao.getAll(null);
 	}
 
 	@Path("/gets/{limit}/{offset}")
@@ -48,7 +48,7 @@ public class StatusAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Status> gets(@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return statusDao.getAll(limit, offset);
+		return statusDao.getAll(null, limit, offset);
 	}
 
 	@Path("/get/{id}")

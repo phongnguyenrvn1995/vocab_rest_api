@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.vocab.api.base.ICourse;
 import com.vocab.api.pojo.Course;
+import com.vocab.consts.ParamsConsts;
 
 public class CourseDBFunc {
 	public static boolean save(ICourse course) {
@@ -63,8 +64,8 @@ public class CourseDBFunc {
 		int offset = 0;
 		
 		if(limitAndOffset.length == 2) {
-			limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
-			offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
+			limit = limitAndOffset[ParamsConsts.IDX_LIMIT] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_LIMIT];
+			offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
 		}
 
 		try {
@@ -137,8 +138,8 @@ public class CourseDBFunc {
 			
 
 			if(limitAndOffset.length == 2) {
-				limit = limitAndOffset[0] < 0 ? 0 : limitAndOffset[0];
-				offset = limitAndOffset[1] < 0 ? 0 : limitAndOffset[1];
+				limit = limitAndOffset[ParamsConsts.IDX_LIMIT] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_LIMIT];
+				offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
 			}
 
 			PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
