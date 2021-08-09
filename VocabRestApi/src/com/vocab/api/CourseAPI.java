@@ -81,7 +81,7 @@ public class CourseAPI {
 	public Response delete(@PathParam("id") int id) {
 		if(courseDao.get(id) == null)
 			return responseDao.get(ResponseConst.SUCCESS);
-		if(lessonDao.getAllByCourseID(id).size() > 0) 
+		if(lessonDao.getAllByCourseID("", id).size() > 0) 
 			return responseDao.get(ResponseConst.DEL_COURSE_ERROR_EXISTING_LESSON_IN_COURSE);
 		Course course = new Course();
 		course.setCourse_id(id);

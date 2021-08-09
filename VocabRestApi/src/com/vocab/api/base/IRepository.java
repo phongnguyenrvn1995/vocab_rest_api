@@ -21,9 +21,9 @@ public interface IRepository {
 	
 	List<ICourse> getAllCourseByStatusID(String searchStr, int id, int limit, int offset);
 
-	List<ILesson> getAllLesson();
+	List<ILesson> getAllLesson(String searchStr);
 
-	List<ILesson> getAllLesson(int limit, int offset);
+	List<ILesson> getAllLesson(String searchStr, int limit, int offset);
 
 	ILesson getLesson(int id);
 
@@ -33,13 +33,13 @@ public interface IRepository {
 
 	boolean deleteLesson(ILesson t);
 
-	List<ILesson> getAllLessonByCourseID(int id);
+	List<ILesson> getAllLessonByCourseID(String searchStr, int id);
 	
-	List<ILesson> getAllLessonByCourseID(int id, int limit, int offset);
+	List<ILesson> getAllLessonByCourseID(String searchStr, int id, int limit, int offset);
 
-	List<ILesson> getAllLessonByStatusID(int id);
+	List<ILesson> getAllLessonByStatusID(String searchStr, int id);
 	
-	List<ILesson> getAllLessonByStatusID(int id, int limit, int offset);
+	List<ILesson> getAllLessonByStatusID(String searchStr, int id, int limit, int offset);
 
 	List<IVocab> getAllVocab();
 	

@@ -55,13 +55,13 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
-	public List<ILesson> getAllLesson() {
-		return LessonDBFunc.gets();
+	public List<ILesson> getAllLesson(String searchStr) {
+		return LessonDBFunc.gets(searchStr);
 	}
 	
 	@Override
-	public List<ILesson> getAllLesson(int limit, int offset) {
-		return LessonDBFunc.gets(limit, offset);
+	public List<ILesson> getAllLesson(String searchStr, int limit, int offset) {
+		return LessonDBFunc.gets(searchStr, limit, offset);
 	}
 
 	@Override
@@ -86,25 +86,25 @@ public class RepositoryImpl implements IRepository{
 	
 
 	@Override
-	public List<ILesson> getAllLessonByCourseID(int id) {
-		return LessonDBFunc.getAllByCourseID(id);
+	public List<ILesson> getAllLessonByCourseID(String searchStr, int id) {
+		return LessonDBFunc.getAllByCourseID(searchStr, id);
 	}
 
 	
 	@Override
-	public List<ILesson> getAllLessonByCourseID(int id, int limit, int offset) {
-		return LessonDBFunc.getAllByCourseID(id, limit, offset);
+	public List<ILesson> getAllLessonByCourseID(String searchStr, int id, int limit, int offset) {
+		return LessonDBFunc.getAllByCourseID(searchStr, id, limit, offset);
 	}
 
 	@Override
-	public List<ILesson> getAllLessonByStatusID(int id) {
-		return LessonDBFunc.getAllByStatusID(id);
+	public List<ILesson> getAllLessonByStatusID(String searchStr, int id) {
+		return LessonDBFunc.getAllByStatusID(searchStr, id);
 	}
 	
 
 	@Override
-	public List<ILesson> getAllLessonByStatusID(int id, int limit, int offset) {
-		return LessonDBFunc.getAllByStatusID(id, limit, offset);
+	public List<ILesson> getAllLessonByStatusID(String searchStr, int id, int limit, int offset) {
+		return LessonDBFunc.getAllByStatusID(searchStr, id, limit, offset);
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.vocab.api.dao.CourseDao;
@@ -41,47 +42,52 @@ public class LessonAPI {
 	@Path("/get_by_status/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Lesson> getsByStatus(@PathParam("id") int id) {
-		return lessonDao.getAllByStatusID(id);
+	public List<Lesson> getsByStatus(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return lessonDao.getAllByStatusID(searchStr, id);
 	}
 
 	@Path("/get_by_status/{id}/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Lesson> getsByStatus(@PathParam("id") int id,
+	public List<Lesson> getsByStatus(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id,
 			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return lessonDao.getAllByStatusID(id, limit, offset);
+		return lessonDao.getAllByStatusID(searchStr, id, limit, offset);
 	}
 
 	@Path("/get_by_course/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Lesson> getsByCourse(@PathParam("id") int id) {
-		return lessonDao.getAllByCourseID(id);
+	public List<Lesson> getsByCourse(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return lessonDao.getAllByCourseID(searchStr, id);
 	}
 
 	@Path("/get_by_course/{id}/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Lesson> getsByCourse(@PathParam("id") int id,
+	public List<Lesson> getsByCourse(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id,
 			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
-		return lessonDao.getAllByCourseID(id, limit, offset);
+		return lessonDao.getAllByCourseID(searchStr, id, limit, offset);
 	}
 
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Lesson> gets() {
-		return lessonDao.getAll(null);
+	public List<Lesson> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return lessonDao.getAll(searchStr);
 	}
 
 	@Path("/gets/{limit}/{offset}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Lesson> gets(@PathParam("limit") int limit, @PathParam("offset") int offset) {
-		return lessonDao.getAll(null, limit, offset);
+	public List<Lesson> gets(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("limit") int limit, @PathParam("offset") int offset) {
+		return lessonDao.getAll(searchStr, limit, offset);
 	}
 
 	@Path("/get/{id}")

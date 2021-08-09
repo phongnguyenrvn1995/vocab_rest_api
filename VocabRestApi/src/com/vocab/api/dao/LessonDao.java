@@ -11,7 +11,7 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 
 	@Override
 	public List<Lesson> getAll(String searchStr) {
-		List<ILesson> iList = iRepository.getAllLesson();
+		List<ILesson> iList = iRepository.getAllLesson(searchStr);
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
 			list.add((Lesson) il);
@@ -21,7 +21,7 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 
 	@Override
 	public List<Lesson> getAll(String searchStr, int limit, int offset) {
-		List<ILesson> iList = iRepository.getAllLesson(limit, offset);
+		List<ILesson> iList = iRepository.getAllLesson(searchStr, limit, offset);
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
 			list.add((Lesson) il);
@@ -50,8 +50,8 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 	}
 
 	@Override
-	public List<Lesson> getAllByCourseID(int id) {
-		List<ILesson> iList = iRepository.getAllLessonByCourseID(id);
+	public List<Lesson> getAllByCourseID(String searchStr, int id) {
+		List<ILesson> iList = iRepository.getAllLessonByCourseID(searchStr, id);
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
 			list.add((Lesson) il);
@@ -62,8 +62,8 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 	
 
 	@Override
-	public List<Lesson> getAllByCourseID(int id, int limit, int offset) {
-		List<ILesson> iList = iRepository.getAllLessonByCourseID(id, limit, offset);
+	public List<Lesson> getAllByCourseID(String searchStr, int id, int limit, int offset) {
+		List<ILesson> iList = iRepository.getAllLessonByCourseID(searchStr, id, limit, offset);
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
 			list.add((Lesson) il);
@@ -72,8 +72,8 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 	}
 
 	@Override
-	public List<Lesson> getAllByStatusID(int id) {
-		List<ILesson> iList = iRepository.getAllLessonByStatusID(id);
+	public List<Lesson> getAllByStatusID(String searchStr, int id) {
+		List<ILesson> iList = iRepository.getAllLessonByStatusID(searchStr, id);
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
 			list.add((Lesson) il);
@@ -82,8 +82,8 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 	}
 
 	@Override
-	public List<Lesson> getAllByStatusID(int id, int limit, int offset) {
-		List<ILesson> iList = iRepository.getAllLessonByStatusID(id, limit, offset);
+	public List<Lesson> getAllByStatusID(String searchStr, int id, int limit, int offset) {
+		List<ILesson> iList = iRepository.getAllLessonByStatusID(searchStr, id, limit, offset);
 		List<Lesson> list = new ArrayList<Lesson>();
 		for(ILesson il : iList) {
 			list.add((Lesson) il);

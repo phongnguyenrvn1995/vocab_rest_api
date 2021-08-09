@@ -12,10 +12,10 @@ import com.vocab.consts.ParamsConsts;
 
 public class LessonDBFunc {
 
-	public static List<ILesson> gets(int ... limitAndOffset) {
+	public static List<ILesson> gets(String searchStr, int ... limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `lesson` LIMIT ? OFFSET ?";
+			String sql = "SELECT * FROM `lesson` WHERE `lesson_name` LIKE ? LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 			if(limitAndOffset.length == 2) {
@@ -23,8 +23,10 @@ public class LessonDBFunc {
 				offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
 			}
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
-			preparedStatement.setInt(1, limit);
-			preparedStatement.setInt(2, offset);
+			int i = 0;
+			preparedStatement.setString(++i, "%" +searchStr +"%");
+			preparedStatement.setInt(++i, limit);
+			preparedStatement.setInt(++i, offset);
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			List<ILesson> list = new ArrayList<ILesson>();
@@ -121,10 +123,12 @@ public class LessonDBFunc {
 		return false;
 	}
 
-	public static List<ILesson> getAllByCourseID(int id, int... limitAndOffset) {
+	public static List<ILesson> getAllByCourseID(String searchStr, int id, int... limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `lesson` WHERE lesson_course = ? LIMIT ? OFFSET ?";
+			String sql = "SELECT * FROM `lesson` "
+					+ "WHERE lesson_course = ? AND `lesson_name` LIKE ? "
+					+ "LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 
@@ -134,9 +138,11 @@ public class LessonDBFunc {
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
-			preparedStatement.setInt(1, id);
-			preparedStatement.setInt(2, limit);
-			preparedStatement.setInt(3, offset);
+			int i = 0;
+			preparedStatement.setInt(++i, id);
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setInt(++i, limit);
+			preparedStatement.setInt(++i, offset);
 			ResultSet rs = preparedStatement.executeQuery();
 			List<ILesson> list = new ArrayList<ILesson>();
 			while (rs.next()) {
@@ -156,10 +162,12 @@ public class LessonDBFunc {
 		return null;
 	}
 
-	public static List<ILesson> getAllByStatusID(int id, int... limitAndOffset) {
+	public static List<ILesson> getAllByStatusID(String searchStr, int id, int... limitAndOffset) {
 		GlobalConnection.open();
 		try {
-			String sql = "SELECT * FROM `lesson` WHERE lesson_status = ? LIMIT ? OFFSET ?";
+			String sql = "SELECT * FROM `lesson` "
+					+ "WHERE lesson_status = ? AND `lesson_name` LIKE ? "
+					+ "LIMIT ? OFFSET ?";
 			int limit = Integer.MAX_VALUE;
 			int offset = 0;
 
@@ -169,9 +177,11 @@ public class LessonDBFunc {
 			}
 
 			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
-			preparedStatement.setInt(1, id);
-			preparedStatement.setInt(2, limit);
-			preparedStatement.setInt(3, offset);
+			int i = 0;
+			preparedStatement.setInt(++i, id);
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setInt(++i, limit);
+			preparedStatement.setInt(++i, offset);
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			List<ILesson> list = new ArrayList<ILesson>();
