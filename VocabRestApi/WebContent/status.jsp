@@ -20,7 +20,7 @@ table, th, td {
 	<h1>Status Define</h1>
 	<%
 		StatusDao statusDao = new StatusDao();
-		List<Status> list = statusDao.getAll();
+		List<Status> list = statusDao.getAll("");
 	%>
 	<table border="1">
 		<thead style="background-color: #e3dfde">

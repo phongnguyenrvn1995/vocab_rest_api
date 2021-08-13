@@ -20,7 +20,7 @@ table, th, td {
 	<h1>Response Define</h1>
 	<%
 		ResponseDao responseDao = new ResponseDao();
-		List<Response> list = responseDao.getAll();
+		List<Response> list = responseDao.getAll("");
 	%>
 	<table border="1">
 		<thead style="background-color: #e3dfde">

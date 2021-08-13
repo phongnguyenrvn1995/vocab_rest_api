@@ -14,6 +14,11 @@ import com.vocab.api.pojo.Response;
 public class RepositoryImpl implements IRepository{
 
 	@Override
+	public int getAllCourseCount(String searchStr) {
+		return CourseDBFunc.getsCount(searchStr);
+	}
+
+	@Override
 	public List<ICourse> getAllCourse(String searchStr) {
 		return CourseDBFunc.gets(searchStr);
 	}
@@ -42,8 +47,12 @@ public class RepositoryImpl implements IRepository{
 	public boolean deleteCourse(ICourse object) {
 		return CourseDBFunc.delete(object);
 	}
-
 		
+	@Override
+	public int getAllCourseByStatusIDCount(String searchStr, int id) {
+		return CourseDBFunc.getAllByStatusIDCount(searchStr, id);
+	}
+
 	@Override
 	public List<ICourse> getAllCourseByStatusID(String searchStr, int id) {
 		return CourseDBFunc.getAllByStatusID(searchStr, id);

@@ -44,6 +44,14 @@ public class CourseAPI {
 		return courseDao.getAllByStatusID(searchStr, id, limit, offset);
 	}
 	
+	@Path("/get_by_status_count/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsByStatusCount(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return courseDao.getAllByStatusIDCount(searchStr, id);
+	}
+	
 	@Path("/get_by_status/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -52,6 +60,13 @@ public class CourseAPI {
 		return courseDao.getAllByStatusID(searchStr, id);
 	}
 
+	@Path("/gets_count")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsCount(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return courseDao.getAllCount(searchStr);
+	}
+	
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

@@ -5,6 +5,8 @@ import java.util.List;
 import com.vocab.api.pojo.Response;
 
 public interface IRepository {
+	int getAllCourseCount(String searchStr);
+	
 	List<ICourse> getAllCourse(String searchStr);
 	
 	List<ICourse> getAllCourse(String searchStr, int limit, int offset);
@@ -16,6 +18,8 @@ public interface IRepository {
 	boolean updateCourse(ICourse t);
 
 	boolean deleteCourse(ICourse t);
+
+	int getAllCourseByStatusIDCount(String searchStr, int id);
 
 	List<ICourse> getAllCourseByStatusID(String searchStr, int id);
 	

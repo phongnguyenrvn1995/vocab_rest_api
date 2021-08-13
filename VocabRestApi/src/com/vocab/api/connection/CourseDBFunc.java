@@ -95,6 +95,29 @@ public class CourseDBFunc {
 		return null;
 	}
 
+	public static int getsCount(String searchStr) {
+		GlobalConnection.open();
+		String sql = "SELECT COUNT(`course_id`) FROM `course` WHERE `course_name` LIKE ?";
+
+		try {
+			PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			statement.setString(++i, "%" + searchStr + "%");
+			ResultSet rs = statement.executeQuery();
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
 	public static boolean update(ICourse course) {
 		GlobalConnection.open();
 		String sql = "UPDATE `course` " + "SET " + "`course_name` = ?," + "`course_description` = ?,"
@@ -128,6 +151,32 @@ public class CourseDBFunc {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public static int getAllByStatusIDCount(String searchStr, int id) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT COUNT(`course_id`) FROM `course` "
+					+ "WHERE course_status = ? AND `course_name` LIKE ?";
+
+
+			PreparedStatement statement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			statement.setInt(++i, id);
+			statement.setString(++i, "%" + searchStr +"%");
+			ResultSet rs = statement.executeQuery();
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
 	}
 
 	public static List<ICourse> getAllByStatusID(String searchStr, int id, int ...limitAndOffset ) {

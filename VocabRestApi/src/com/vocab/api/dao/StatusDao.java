@@ -10,6 +10,12 @@ import com.vocab.api.pojo.Status;
 public class StatusDao extends BaseDao implements IStatusDao<Status>{
 
 	@Override
+	public int getAllCount(String searchStr) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public List<Status> getAll(String searchStr) {
 		List<IStatus> iList = iRepository.getAllStatus(searchStr);
 		List<Status> list = new ArrayList<Status>();

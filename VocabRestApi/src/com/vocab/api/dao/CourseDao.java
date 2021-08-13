@@ -11,6 +11,12 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 
 
 	@Override
+	public int getAllCount(String searchStr) {
+		return iRepository.getAllCourseCount(searchStr);
+	}
+
+
+	@Override
 	public List<Course> getAll(String searchStr) {
 		List<ICourse> iList = iRepository.getAllCourse(searchStr);
 		List<Course> list = new ArrayList<Course>();
@@ -50,6 +56,11 @@ public class CourseDao extends BaseDao implements ICourseDao<Course> {
 	@Override
 	public boolean delete(Course course) {
 		return iRepository.deleteCourse(course);
+	}
+	
+	@Override
+	public int getAllByStatusIDCount(String searchStr, int id) {
+		return iRepository.getAllCourseByStatusIDCount(searchStr, id);
 	}
 
 	@Override

@@ -10,6 +10,12 @@ import com.vocab.api.pojo.Response;
 public class ResponseDao extends BaseDao implements IResponseDao<Response>{
 
 	@Override
+	public int getAllCount(String searchStr) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public List<Response> getAll(String searchStr) {
 		List<IResponse> iList = iRepository.getResponseAll(searchStr);
 		List<Response> list = new ArrayList<Response>();

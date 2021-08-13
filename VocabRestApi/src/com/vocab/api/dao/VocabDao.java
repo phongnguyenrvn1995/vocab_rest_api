@@ -10,6 +10,12 @@ import com.vocab.api.pojo.Vocab;
 public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 
 	@Override
+	public int getAllCount(String searchStr) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public List<Vocab> getAll(String searchStr) {
 		List<IVocab> iList = iRepository.getAllVocab(searchStr);
 		List<Vocab> list = new ArrayList<Vocab>();

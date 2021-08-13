@@ -10,6 +10,12 @@ import com.vocab.api.pojo.Lesson;
 public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 
 	@Override
+	public int getAllCount(String searchStr) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public List<Lesson> getAll(String searchStr) {
 		List<ILesson> iList = iRepository.getAllLesson(searchStr);
 		List<Lesson> list = new ArrayList<Lesson>();
