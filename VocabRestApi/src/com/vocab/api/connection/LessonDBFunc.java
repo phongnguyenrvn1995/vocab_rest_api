@@ -11,6 +11,28 @@ import com.vocab.api.pojo.Lesson;
 import com.vocab.consts.ParamsConsts;
 
 public class LessonDBFunc {
+	
+	public static int getsCount(String searchStr) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT COUNT(`lesson_id`) FROM `lesson` WHERE `lesson_name` LIKE ?";
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			preparedStatement.setString(++i, "%" +searchStr +"%");
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 	public static List<ILesson> gets(String searchStr, int ... limitAndOffset) {
 		GlobalConnection.open();
@@ -123,6 +145,31 @@ public class LessonDBFunc {
 		return false;
 	}
 
+	public static int getAllByCourseIDCount(String searchStr, int id) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT COUNT(`lesson_id`) FROM `lesson` "
+					+ "WHERE lesson_course = ? AND `lesson_name` LIKE ?";
+			
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			preparedStatement.setInt(++i, id);
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			ResultSet rs = preparedStatement.executeQuery();
+
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 	public static List<ILesson> getAllByCourseID(String searchStr, int id, int... limitAndOffset) {
 		GlobalConnection.open();
 		try {
@@ -160,6 +207,31 @@ public class LessonDBFunc {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static int getAllByStatusIDCount(String searchStr, int id) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT COUNT(`lesson_id`) FROM `lesson` "
+					+ "WHERE lesson_status = ? AND `lesson_name` LIKE ?";
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			preparedStatement.setInt(++i, id);
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	public static List<ILesson> getAllByStatusID(String searchStr, int id, int... limitAndOffset) {

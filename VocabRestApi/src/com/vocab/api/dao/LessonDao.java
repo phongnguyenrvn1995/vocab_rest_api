@@ -11,8 +11,7 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 
 	@Override
 	public int getAllCount(String searchStr) {
-		// TODO Auto-generated method stub
-		return 0;
+		return iRepository.getAllLessonCount(searchStr);
 	}
 
 	@Override
@@ -54,6 +53,11 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 	public boolean delete(Lesson lesson) {
 		return iRepository.deleteLesson(lesson);
 	}
+	
+	@Override
+	public int getAllByCourseIDCount(String searchStr, int id) {
+		return iRepository.getAllLessonByCourseIDCount(searchStr, id);
+	}
 
 	@Override
 	public List<Lesson> getAllByCourseID(String searchStr, int id) {
@@ -75,6 +79,11 @@ public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 			list.add((Lesson) il);
 		}
 		return list;
+	}
+	
+	@Override
+	public int getAllByStatusIDCount(String searchStr, int id) {
+		return iRepository.getAllLessonByStatusIDCount(searchStr, id);
 	}
 
 	@Override

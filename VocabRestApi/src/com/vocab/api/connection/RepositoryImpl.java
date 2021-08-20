@@ -62,6 +62,11 @@ public class RepositoryImpl implements IRepository{
 	public List<ICourse> getAllCourseByStatusID(String searchStr, int id, int limit, int offset) {
 		return CourseDBFunc.getAllByStatusID(searchStr, id, limit, offset);
 	}
+	
+	@Override
+	public int getAllLessonCount(String searchStr) {
+		return LessonDBFunc.getsCount(searchStr);
+	}
 
 	@Override
 	public List<ILesson> getAllLesson(String searchStr) {
@@ -95,6 +100,11 @@ public class RepositoryImpl implements IRepository{
 	
 
 	@Override
+	public int getAllLessonByCourseIDCount(String searchStr, int id) {
+		return LessonDBFunc.getAllByCourseIDCount(searchStr, id);
+	}
+
+	@Override
 	public List<ILesson> getAllLessonByCourseID(String searchStr, int id) {
 		return LessonDBFunc.getAllByCourseID(searchStr, id);
 	}
@@ -103,6 +113,11 @@ public class RepositoryImpl implements IRepository{
 	@Override
 	public List<ILesson> getAllLessonByCourseID(String searchStr, int id, int limit, int offset) {
 		return LessonDBFunc.getAllByCourseID(searchStr, id, limit, offset);
+	}
+
+	@Override
+	public int getAllLessonByStatusIDCount(String searchStr, int id) {
+		return LessonDBFunc.getAllByStatusIDCount(searchStr, id);
 	}
 
 	@Override

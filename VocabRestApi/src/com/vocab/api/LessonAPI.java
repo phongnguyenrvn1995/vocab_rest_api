@@ -39,6 +39,14 @@ public class LessonAPI {
 		responseDao = new ResponseDao();
 	}
 
+	@Path("/get_by_status_count/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsByStatusCount(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return lessonDao.getAllByStatusIDCount(searchStr, id);
+	}
+
 	@Path("/get_by_status/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -55,6 +63,14 @@ public class LessonAPI {
 			@PathParam("limit") int limit, 
 			@PathParam("offset") int offset) {
 		return lessonDao.getAllByStatusID(searchStr, id, limit, offset);
+	}
+
+	@Path("/get_by_course_count/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsByCourseCount(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return lessonDao.getAllByCourseIDCount(searchStr, id);
 	}
 
 	@Path("/get_by_course/{id}")
@@ -75,6 +91,13 @@ public class LessonAPI {
 		return lessonDao.getAllByCourseID(searchStr, id, limit, offset);
 	}
 
+	@Path("/gets_count")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsCount(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return lessonDao.getAllCount(searchStr);
+	}
+	
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

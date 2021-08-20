@@ -25,6 +25,8 @@ public interface IRepository {
 	
 	List<ICourse> getAllCourseByStatusID(String searchStr, int id, int limit, int offset);
 
+	int getAllLessonCount(String searchStr);
+	
 	List<ILesson> getAllLesson(String searchStr);
 
 	List<ILesson> getAllLesson(String searchStr, int limit, int offset);
@@ -37,10 +39,14 @@ public interface IRepository {
 
 	boolean deleteLesson(ILesson t);
 
+	int getAllLessonByCourseIDCount(String searchStr, int id);
+	
 	List<ILesson> getAllLessonByCourseID(String searchStr, int id);
 	
 	List<ILesson> getAllLessonByCourseID(String searchStr, int id, int limit, int offset);
-
+	
+	int getAllLessonByStatusIDCount(String searchStr, int id);
+	
 	List<ILesson> getAllLessonByStatusID(String searchStr, int id);
 	
 	List<ILesson> getAllLessonByStatusID(String searchStr, int id, int limit, int offset);
