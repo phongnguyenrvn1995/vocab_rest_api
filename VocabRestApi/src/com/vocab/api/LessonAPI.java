@@ -113,6 +113,36 @@ public class LessonAPI {
 		return lessonDao.getAll(searchStr, limit, offset);
 	}
 
+	
+	@Path("/get_filter_count/")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getFilterCount(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("courseID") int courseID,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("statusID") int statusID) {
+		return lessonDao.getWithFilterCount(searchStr, courseID, statusID);
+	}
+
+	
+	@Path("/get_filter/")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Lesson> getFilter(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("courseID") int courseID,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("statusID") int statusID) {
+		return lessonDao.getWithFilter(searchStr, courseID, statusID);
+	}
+
+	@Path("/get_filter/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Lesson> getFilter(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("courseID") int courseID,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("statusID") int statusID,
+			@PathParam("limit") int limit, @PathParam("offset") int offset) {
+		return lessonDao.getWithFilter(searchStr, courseID, statusID, limit, offset);
+	}
+
 	@Path("/get/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

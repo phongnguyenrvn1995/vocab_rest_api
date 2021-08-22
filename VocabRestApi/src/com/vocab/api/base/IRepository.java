@@ -25,6 +25,12 @@ public interface IRepository {
 	
 	List<ICourse> getAllCourseByStatusID(String searchStr, int id, int limit, int offset);
 
+	int getLessonFilterCount(String searchStr, int courseID, int statusID);
+	
+	List<ILesson> getLessonFilter(String searchStr, int courseID, int statusID);
+	
+	List<ILesson> getLessonFilter(String searchStr, int courseID, int statusID, int limit, int offset);
+
 	int getAllLessonCount(String searchStr);
 	
 	List<ILesson> getAllLesson(String searchStr);

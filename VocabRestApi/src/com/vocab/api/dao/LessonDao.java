@@ -10,6 +10,33 @@ import com.vocab.api.pojo.Lesson;
 public class LessonDao extends BaseDao implements ILessonDao<Lesson> {
 
 	@Override
+	public int getWithFilterCount(String searchStr, int courseID, int statusID) {
+		return iRepository.getLessonFilterCount(searchStr, courseID, statusID);
+	}
+
+
+	@Override
+	public List<Lesson> getWithFilter(String searchStr, int courseID, int statusID) {
+		List<ILesson> iList = iRepository.getLessonFilter(searchStr, courseID, statusID);
+		List<Lesson> list = new ArrayList<Lesson>();
+		for(ILesson il : iList) {
+			list.add((Lesson) il);
+		}
+		return list;
+	}
+
+		
+	@Override
+	public List<Lesson> getWithFilter(String searchStr, int courseID, int statusID, int limit, int offset) {
+		List<ILesson> iList = iRepository.getLessonFilter(searchStr, courseID, statusID, limit, offset);
+		List<Lesson> list = new ArrayList<Lesson>();
+		for(ILesson il : iList) {
+			list.add((Lesson) il);
+		}
+		return list;
+	}
+	
+	@Override
 	public int getAllCount(String searchStr) {
 		return iRepository.getAllLessonCount(searchStr);
 	}

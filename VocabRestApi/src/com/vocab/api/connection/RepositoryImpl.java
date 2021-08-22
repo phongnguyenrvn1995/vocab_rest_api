@@ -64,6 +64,21 @@ public class RepositoryImpl implements IRepository{
 	}
 	
 	@Override
+	public int getLessonFilterCount(String searchStr, int courseID, int statusID) {
+		return LessonDBFunc.getFilterCount(searchStr, courseID, statusID);
+	}
+
+	@Override
+	public List<ILesson> getLessonFilter(String searchStr, int courseID, int statusID) {
+		return LessonDBFunc.getFilter(searchStr, courseID, statusID);
+	}
+	
+	@Override
+	public List<ILesson> getLessonFilter(String searchStr, int courseID, int statusID, int limit, int offset) {
+		return LessonDBFunc.getFilter(searchStr, courseID, statusID, limit, offset);
+	}
+
+	@Override
 	public int getAllLessonCount(String searchStr) {
 		return LessonDBFunc.getsCount(searchStr);
 	}
