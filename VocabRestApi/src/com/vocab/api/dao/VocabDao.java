@@ -80,6 +80,11 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 
 	@Override
+	public int getAllByTypeIDCount(String searchStr, int id) {
+		return iRepository.getAllVocabByTypeIDCount(searchStr, id);
+	}
+
+	@Override
 	public List<Vocab> getAllByTypeID(String searchStr, int id) {
 		List<IVocab> iList = iRepository.getAllVocabByTypeID(searchStr, id);
 		List<Vocab> list = new ArrayList<Vocab>();

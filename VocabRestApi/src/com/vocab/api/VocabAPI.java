@@ -37,6 +37,14 @@ public class VocabAPI {
 		vocabTypeDao = new VocabTypeDao();
 	}
 
+	@Path("/gets_by_type_count/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsByTypeCount(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return vocabDao.getAllByTypeIDCount(searchStr, id);
+	}
+
 	@Path("/gets_by_type/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

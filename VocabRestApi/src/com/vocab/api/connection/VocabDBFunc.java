@@ -239,6 +239,31 @@ public class VocabDBFunc {
 		return null;
 	}
 
+	public static int getAllByTypeIDCount(String searchStr, int id) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT COUNT(`vocab_id`) FROM `vocab` "
+					+ "WHERE vocab_type = ? AND (`vocab_en`LIKE ? OR vocab_vi LIKE ?) ";
+
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			preparedStatement.setInt(++i, id);
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			ResultSet rs = preparedStatement.executeQuery();
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 	public static List<IVocab> getAllByTypeID(String searchStr, int id, int ...limitAndOffset) {
 		GlobalConnection.open();
 		try {
