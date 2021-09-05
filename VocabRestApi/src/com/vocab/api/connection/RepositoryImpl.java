@@ -165,6 +165,21 @@ public class RepositoryImpl implements IRepository{
 	public IVocab getVocab(int id) {
 		return VocabDBFunc.get(id);
 	}
+	
+	@Override
+	public int getVocabFilterCount(String searchStr, int typeId, int lessonId) {
+		return VocabDBFunc.getVocabFilterCount(searchStr, typeId, lessonId);
+	}
+
+	@Override
+	public List<IVocab> getVocabFilter(String searchStr, int typeId, int lessonId) {
+		return VocabDBFunc.getVocabFilter(searchStr, typeId, lessonId);
+	}
+
+	@Override
+	public List<IVocab> getVocabFilter(String searchStr, int typeId, int lessonId, int limit, int offset) {
+		return VocabDBFunc.getVocabFilter(searchStr, typeId, lessonId, limit, offset);
+	}
 
 	@Override
 	public boolean saveVocab(IVocab object) {

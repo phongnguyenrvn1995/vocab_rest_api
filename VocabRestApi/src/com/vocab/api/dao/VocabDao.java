@@ -103,5 +103,29 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 		}
 		return list;
 	}
-	
+
+	@Override
+	public int getWithFilterCount(String searchStr, int typeId, int lessonId) {
+		return iRepository.getVocabFilterCount(searchStr, typeId, lessonId);
+	}
+
+	@Override
+	public List<Vocab> getWithFilter(String searchStr, int typeId, int lessonId) {
+		List<IVocab> iList = iRepository.getVocabFilter(searchStr, typeId, lessonId);
+		List<Vocab> list = new ArrayList<Vocab>();
+		for(IVocab iv : iList) {
+			list.add((Vocab) iv);
+		}
+		return list;
+	}
+
+	@Override
+	public List<Vocab> getWithFilter(String searchStr, int typeId, int lessonId, int limit, int offset) {
+		List<IVocab> iList = iRepository.getVocabFilter(searchStr, typeId, lessonId, limit, offset);
+		List<Vocab> list = new ArrayList<Vocab>();
+		for(IVocab iv : iList) {
+			list.add((Vocab) iv);
+		}
+		return list;
+	}
 }

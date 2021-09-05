@@ -11,6 +11,81 @@ import com.vocab.api.pojo.Vocab;
 import com.vocab.consts.ParamsConsts;
 
 public class VocabDBFunc {
+
+	public static int getVocabFilterCount(String searchStr, int typeId, int lessonId) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT COUNT(`vocab_id`) FROM `vocab` "
+					+ "WHERE vocab_type = ? "
+					+ "AND vocab_lesson = ? "
+					+ "AND (`vocab_en`LIKE ? OR vocab_vi LIKE ?) ";
+
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			preparedStatement.setInt(++i, typeId);
+			preparedStatement.setInt(++i, lessonId);
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			ResultSet rs = preparedStatement.executeQuery();
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public static List<IVocab> getVocabFilter(String searchStr, int typeId, int lessonId, int ...limitAndOffset) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT * FROM `vocab` "
+					+ "WHERE vocab_type = ? "
+					+ "AND vocab_lesson = ? "
+					+ "AND (`vocab_en`LIKE ? OR vocab_vi LIKE ?) "
+					+ "LIMIT ? OFFSET ?";
+			int limit = Integer.MAX_VALUE;
+			int offset = 0;
+
+			if(limitAndOffset.length == 2) {
+				limit = limitAndOffset[ParamsConsts.IDX_LIMIT] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_LIMIT];
+				offset = limitAndOffset[ParamsConsts.IDX_OFFSET] < 0 ? 0 : limitAndOffset[ParamsConsts.IDX_OFFSET];
+			}
+
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			preparedStatement.setInt(++i, typeId);
+			preparedStatement.setInt(++i, lessonId);
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setInt(++i, limit);
+			preparedStatement.setInt(++i, offset);
+			ResultSet rs = preparedStatement.executeQuery();
+			List<IVocab> list = new ArrayList<IVocab>();
+			while(rs.next()) {
+				Vocab vocab = new Vocab();
+				vocab.setVocab_id(rs.getInt("vocab_id"));         
+				vocab.setVocab_type(rs.getInt("vocab_type"));       
+				vocab.setVocab_lesson(rs.getInt("vocab_lesson"));     
+				vocab.setVocab_en(rs.getString("vocab_en"));         
+				vocab.setVocab_ipa(rs.getString("vocab_ipa"));     
+				vocab.setVocab_vi(rs.getString("vocab_vi")); 
+				vocab.setVocab_description(rs.getString("vocab_description")); 
+				vocab.setVocab_sound_url(rs.getString("vocab_sound_url")); 
+				list.add(vocab);
+			}
+			rs.close();
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public static int getsCount(String searchStr) {
 		GlobalConnection.open();

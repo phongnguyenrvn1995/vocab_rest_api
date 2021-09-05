@@ -63,6 +63,12 @@ public interface IRepository {
 	
 	List<IVocab> getAllVocab(String searchStr, int limit, int offset);
 
+	int getVocabFilterCount(String searchStr, int typeId, int lessonId);
+	
+	List<IVocab> getVocabFilter(String searchStr, int typeId, int lessonId);
+	
+	List<IVocab> getVocabFilter(String searchStr, int typeId, int lessonId, int limit, int offset);
+	
 	IVocab getVocab(int id);
 
 	boolean saveVocab(IVocab t);

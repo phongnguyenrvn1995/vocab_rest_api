@@ -9,4 +9,8 @@ public interface IVocabDao<T> extends IDao<T> {
 	int getAllByTypeIDCount(String searchStr, int id);
 	List<T> getAllByTypeID(String searchStr, int id);
 	List<T> getAllByTypeID(String searchStr, int id, int limit, int offset);
+
+	int getWithFilterCount(String searchStr, int typeId, int lessonId);
+	List<T> getWithFilter(String searchStr, int typeId, int lessonId);
+	List<T> getWithFilter(String searchStr, int typeId, int lessonId, int limit, int offset);
 }

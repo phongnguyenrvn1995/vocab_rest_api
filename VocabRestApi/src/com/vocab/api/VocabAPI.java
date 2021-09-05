@@ -119,6 +119,35 @@ public class VocabAPI {
 		return vocabDao.get(id);
 	}
 
+	@Path("/get_filter_count")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getFilterCount(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("type_id") int typeId,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("lesson_id") int lessonId) {
+		return vocabDao.getWithFilterCount(searchStr, typeId, lessonId);
+	}
+
+	@Path("/get_filter/")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vocab> getFilter(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("type_id") int typeId,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("lesson_id") int lessonId) {
+		return vocabDao.getWithFilter(searchStr, typeId, lessonId);
+	}
+	
+
+	@Path("/get_filter/{limit}/{offset}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vocab> getFilter(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("type_id") int typeId,
+			@DefaultValue(Integer.MIN_VALUE + "") @QueryParam("lesson_id") int lessonId,
+			@PathParam("limit") int limit, 
+			@PathParam("offset") int offset) {
+		return vocabDao.getWithFilter(searchStr, typeId, lessonId, limit, offset);
+	}
 	@Path("/delete/{id}")
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
