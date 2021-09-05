@@ -55,6 +55,14 @@ public class VocabAPI {
 		return vocabDao.getAllByTypeID(searchStr, id, limit, offset);
 	}
 
+	@Path("/gets_by_lesson_count/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsByLessonCount(@DefaultValue("") @QueryParam("searchStr") String searchStr,
+			@PathParam("id") int id) {
+		return vocabDao.getAllByLessonIDCount(searchStr, id);
+	}
+
 	@Path("/gets_by_lesson/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

@@ -222,6 +222,11 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
+	public int getAllVocabByLessonIDCount(String searchStr, int id) {
+		return VocabDBFunc.getAllByLessonIDCount(searchStr, id);
+	}
+
+	@Override
 	public List<IVocab> getAllVocabByLessonID(String searchStr, int id) {
 		return VocabDBFunc.getAllByLessonID(searchStr, id);
 	}

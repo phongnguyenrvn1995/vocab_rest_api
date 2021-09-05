@@ -55,6 +55,11 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 	}
 
 	@Override
+	public int getAllByLessonIDCount(String searchStr, int id) {
+		return iRepository.getAllVocabByLessonIDCount(searchStr, id);
+	}
+
+	@Override
 	public List<Vocab> getAllByLessonID(String searchStr, int id) {
 		List<IVocab> iList = iRepository.getAllVocabByLessonID(searchStr, id);
 		List<Vocab> list = new ArrayList<Vocab>();
