@@ -11,6 +11,30 @@ import com.vocab.api.pojo.Vocab;
 import com.vocab.consts.ParamsConsts;
 
 public class VocabDBFunc {
+	
+	public static int getsCount(String searchStr) {
+		GlobalConnection.open();
+		try {
+			String sql = "SELECT COUNT(`vocab_id`) FROM `vocab` "
+					+ "WHERE (`vocab_en`LIKE ? OR vocab_vi LIKE ?)";
+
+			PreparedStatement preparedStatement = GlobalConnection.getPreparedStatement(sql);
+			int i = 0;
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			preparedStatement.setString(++i, "%" + searchStr + "%");
+			ResultSet rs = preparedStatement.executeQuery();
+			int count = 0;
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close();
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 	public static List<IVocab> gets(String searchStr, int...limitAndOffset) {
 		GlobalConnection.open();

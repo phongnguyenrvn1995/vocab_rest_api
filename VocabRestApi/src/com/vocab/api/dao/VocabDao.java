@@ -11,8 +11,7 @@ public class VocabDao extends BaseDao implements IVocabDao<Vocab> {
 
 	@Override
 	public int getAllCount(String searchStr) {
-		// TODO Auto-generated method stub
-		return 0;
+		return iRepository.getAllVocabCount(searchStr);
 	}
 
 	@Override

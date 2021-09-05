@@ -57,6 +57,8 @@ public interface IRepository {
 	
 	List<ILesson> getAllLessonByStatusID(String searchStr, int id, int limit, int offset);
 
+	int getAllVocabCount(String searchStr);
+	
 	List<IVocab> getAllVocab(String searchStr);
 	
 	List<IVocab> getAllVocab(String searchStr, int limit, int offset);

@@ -73,6 +73,13 @@ public class VocabAPI {
 		return vocabDao.getAllByLessonID(searchStr, id, limit, offset);
 	}
 
+	@Path("/gets_count")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int getsCount(@DefaultValue("") @QueryParam("searchStr") String searchStr) {
+		return vocabDao.getAllCount(searchStr);
+	}
+
 	@Path("/gets")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

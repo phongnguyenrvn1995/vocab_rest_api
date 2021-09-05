@@ -147,6 +147,11 @@ public class RepositoryImpl implements IRepository{
 	}
 
 	@Override
+	public int getAllVocabCount(String searchStr) {
+		return VocabDBFunc.getsCount(searchStr);
+	}
+
+	@Override
 	public List<IVocab> getAllVocab(String searchStr) {
 		return VocabDBFunc.gets(searchStr);
 	}
