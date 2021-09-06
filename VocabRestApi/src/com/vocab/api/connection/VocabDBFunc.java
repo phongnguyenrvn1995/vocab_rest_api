@@ -13,6 +13,15 @@ import com.vocab.consts.ParamsConsts;
 public class VocabDBFunc {
 
 	public static int getVocabFilterCount(String searchStr, int typeId, int lessonId) {
+		if(typeId == ParamsConsts.TYPE_NOT_DEF && lessonId == ParamsConsts.LESSON_NOT_DEF) {
+			return getsCount(searchStr);			
+		}
+		if(typeId == ParamsConsts.TYPE_NOT_DEF) {
+			return getAllByLessonIDCount(searchStr, lessonId);
+		}
+		if(lessonId == ParamsConsts.LESSON_NOT_DEF) {
+			return getAllByTypeIDCount(searchStr, typeId);
+		}
 		GlobalConnection.open();
 		try {
 			String sql = "SELECT COUNT(`vocab_id`) FROM `vocab` "
@@ -41,6 +50,15 @@ public class VocabDBFunc {
 	}
 
 	public static List<IVocab> getVocabFilter(String searchStr, int typeId, int lessonId, int ...limitAndOffset) {
+		if(typeId == ParamsConsts.TYPE_NOT_DEF && lessonId == ParamsConsts.LESSON_NOT_DEF) {
+			return gets(searchStr, limitAndOffset);			
+		}
+		if(typeId == ParamsConsts.TYPE_NOT_DEF) {
+			return getAllByLessonID(searchStr, lessonId, limitAndOffset);
+		}
+		if(lessonId == ParamsConsts.LESSON_NOT_DEF) {
+			return getAllByTypeID(searchStr, typeId, limitAndOffset);
+		}
 		GlobalConnection.open();
 		try {
 			String sql = "SELECT * FROM `vocab` "
